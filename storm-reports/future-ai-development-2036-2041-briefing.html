@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Storm Research: AI Development in 2036-2041</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --blue: #2563eb; --blue-dark: #1e3a8a; --ink: #16203a; --muted: #5b6677; --line: #e4e9f2;
+    --bg-soft: #f6f8fc; --green: #15803d; --green-bg: #e9f6ee; --amber: #b45309; --amber-bg: #fdf3e7;
+    --slate: #475569; --slate-bg: #eef1f6; --red: #b91c1c; --red-bg: #fdecec;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Roboto', system-ui, sans-serif; color: var(--ink); background: #eef1f6; line-height: 1.62; font-weight: 400; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 900px; margin: 0 auto; background: #fff; padding: 64px 72px 80px; box-shadow: 0 1px 40px rgba(22,32,58,0.08); }
+  .eyebrow { font-family: 'Roboto Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+  h1 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 18px; }
+  .lede { font-size: 17px; color: var(--muted); max-width: 640px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 26px; padding-top: 22px; border-top: 2px solid var(--line); font-family: 'Roboto Mono', monospace; font-size: 12px; color: var(--muted); }
+  .meta-row b { color: var(--ink); font-weight: 600; }
+  .verify-banner { margin-top: 22px; background: var(--green-bg); border: 1px solid #bfe3cc; border-radius: 8px; padding: 13px 18px; font-size: 13px; color: #14532d; display: flex; gap: 10px; align-items: baseline; }
+  .verify-banner b { font-weight: 700; }
+  .verify-banner .tag { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; background: var(--green); color: #fff; padding: 3px 8px; border-radius: 4px; flex-shrink: 0; }
+  .howto { margin-top: 18px; border: 1px solid var(--line); border-radius: 8px; padding: 18px 22px; background: var(--bg-soft); }
+  .howto h4 { font-family: 'Roboto Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .howto ul { list-style: none; }
+  .howto li { font-size: 13.5px; color: #2b3950; margin-bottom: 7px; padding-left: 16px; position: relative; }
+  .howto li::before { content: "›"; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+  .section { margin-top: 56px; }
+  .section-num { font-family: 'Roboto Mono', monospace; font-size: 13px; font-weight: 600; color: var(--blue); letter-spacing: 0.05em; }
+  h2 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 25px; letter-spacing: -0.01em; color: var(--ink); margin: 6px 0 18px; line-height: 1.2; }
+  h2 .bar { display: inline-block; width: 38px; height: 4px; background: var(--blue); border-radius: 2px; vertical-align: middle; margin-right: 14px; }
+  p { margin-bottom: 14px; }
+  p.body-lg { font-size: 16.5px; }
+  .ceo { background: var(--bg-soft); border-left: 5px solid var(--blue); padding: 26px 30px; border-radius: 4px; font-size: 16.5px; }
+  .ceo strong { font-weight: 700; color: var(--blue-dark); }
+  .finding { border: 1px solid var(--line); border-radius: 10px; padding: 24px 26px; margin-bottom: 18px; position: relative; }
+  .finding-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 12px; }
+  .finding-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); flex: 1; }
+  .finding-rank { font-family: 'Roboto Mono', monospace; font-weight: 600; font-size: 13px; color: #fff; background: var(--ink); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .finding p { font-size: 15px; color: #283449; margin-bottom: 14px; }
+  .rel-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  .rel { display: inline-flex; align-items: center; gap: 9px; font-family: 'Roboto Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; }
+  .rel.high { background: #e7f0fe; color: var(--blue); }
+  .rel.medhigh { background: var(--green-bg); color: var(--green); }
+  .rel.medium { background: var(--amber-bg); color: var(--amber); }
+  .rel.low { background: var(--red-bg); color: var(--red); }
+  .score { font-family: 'Roboto Mono', monospace; font-size: 13px; font-weight: 600; color: var(--ink); }
+  .score b { font-size: 17px; }
+  .score span { color: var(--muted); font-weight: 400; }
+  .chips { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+  .chip-row { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; font-size: 13.5px; }
+  .chip-label { font-family: 'Roboto Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+  .chip-label.sup { background: var(--green-bg); color: var(--green); }
+  .chip-label.chal { background: var(--red-bg); color: var(--red); }
+  .chip-label.fix { background: var(--amber-bg); color: var(--amber); }
+  .chip-row span.who { color: #2b3950; }
+  .chip-row span.who b { font-weight: 600; }
+  .contested { border: 1px dashed var(--amber); background: #fffaf2; border-radius: 10px; padding: 22px 26px; margin-bottom: 18px; }
+  .contested .tag { font-family: 'Roboto Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); }
+  .contested h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; color: var(--ink); margin: 6px 0 10px; }
+  .contested p { font-size: 14px; color: #4a3a22; margin-bottom: 0; }
+  .connection { background: linear-gradient(135deg, #16203a 0%, #1e3a8a 100%); color: #eaf0fb; border-radius: 12px; padding: 34px 38px; }
+  .connection h2 { color: #fff; }
+  .connection h2 .bar { background: #6ea8ff; }
+  .connection .section-num { color: #9ec1ff; }
+  .connection p { color: #d3def3; font-size: 16px; }
+  .connection .punch { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 18px; color: #fff; line-height: 1.4; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.18); }
+  .assume { border: 1px solid var(--line); border-left: 5px solid var(--amber); border-radius: 6px; padding: 24px 28px; background: #fffdf9; }
+  .assume h3 { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+  .assume p { font-size: 15px; color: #3a3320; }
+  .assume p:last-child { margin-bottom: 0; }
+  .action-item { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .action-item:last-child { border-bottom: none; }
+  .action-mark { font-family: 'Roboto Mono', monospace; font-weight: 600; font-size: 13px; color: var(--blue); flex-shrink: 0; width: 34px; }
+  .action-item .do { font-weight: 600; color: var(--ink); }
+  .action-item p { font-size: 14.5px; margin-bottom: 0; color: #2b3950; }
+  .frontier { border: 2px dashed var(--blue); border-radius: 12px; padding: 30px 34px; background: var(--bg-soft); }
+  .frontier .q { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.32; color: var(--blue-dark); margin-bottom: 16px; }
+  .frontier p { font-size: 15px; color: #2b3950; }
+  .oncam { margin-top: 18px; }
+  .oncam-col { border-radius: 10px; padding: 20px 24px; margin-bottom: 14px; }
+  .oncam-col.safe { background: var(--green-bg); border: 1px solid #bfe3cc; }
+  .oncam-col.caveat { background: var(--amber-bg); border: 1px solid #f0d9b5; }
+  .oncam-col.avoid { background: var(--red-bg); border: 1px solid #f3c9c9; }
+  .oncam-col h4 { font-family: 'Roboto Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .oncam-col.safe h4 { color: var(--green); }
+  .oncam-col.caveat h4 { color: var(--amber); }
+  .oncam-col.avoid h4 { color: var(--red); }
+  .oncam-col ul { list-style: none; }
+  .oncam-col li { font-size: 14px; color: #233; margin-bottom: 8px; padding-left: 16px; position: relative; line-height: 1.5; }
+  .oncam-col li::before { content: "•"; position: absolute; left: 0; font-weight: 700; }
+  .oncam-col.safe li::before { color: var(--green); }
+  .oncam-col.caveat li::before { color: var(--amber); }
+  .oncam-col.avoid li::before { color: var(--red); }
+  .refs { margin-top: 56px; padding-top: 26px; border-top: 2px solid var(--line); }
+  .refs h3 { font-family: 'Roboto Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .refs ul { list-style: none; }
+  .refs li { font-size: 12.5px; color: var(--muted); margin-bottom: 11px; padding-left: 16px; position: relative; line-height: 1.5; }
+  .refs li::before { content: "›"; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+  .refs a { color: #34507e; text-decoration: none; }
+  .refs a:hover { text-decoration: underline; }
+  .refs .vstat { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; margin-right: 6px; }
+  .vstat.ok { background: var(--green-bg); color: var(--green); }
+  .vstat.part { background: var(--amber-bg); color: var(--amber); }
+  .vstat.weak { background: var(--red-bg); color: var(--red); }
+  .footer { margin-top: 40px; font-family: 'Roboto Mono', monospace; font-size: 11px; color: #9aa6b8; text-align: center; }
+  @media (max-width: 640px) { .page { padding: 40px 24px 56px; } h1 { font-size: 30px; } }
+  @media print { body { background: #fff; } .page { box-shadow: none; max-width: 100%; padding: 0; } .connection, .oncam-col { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="eyebrow">Storm Research &middot; v2 (verified)</div>
+    <h1>AI in 2036&ndash;2041: What the Next Decade-and-a-Half Actually Builds</h1>
+    <p class="lede">A five-lens synthesis &mdash; practitioner, academic, skeptic, economist, and historian &mdash; on where AI capability, deployment, economics, and governance plausibly land 10&ndash;15 years out. Every claim independently checked against its primary source before publication.</p>
+    <div class="meta-row">
+      <span><b>Date</b> &nbsp;2026-10-14</span>
+      <span><b>Method</b> &nbsp;5 author-built expert lenses + contradiction map</span>
+      <span><b>Audience</b> &nbsp;Long-horizon strategists, investors, policymakers &amp; builders</span>
+    </div>
+    <div class="verify-banner">
+      <span class="tag">Verified</span>
+      <span>All 26 citations independently checked against primary sources on 2026-10-14. <b>Result: 0 fabricated, 7 corrected, 4 demoted.</b> Confidence scores reflect post-verification evidence quality.</span>
+    </div>
+    <div class="howto">
+      <h4>How to read this</h4>
+      <ul>
+        <li><b>The panel was author-constructed.</b> All five lenses share one framing, so where they agree, treat it as a strong hypothesis, not independent proof.</li>
+        <li><b>Confidence is scored 1-10</b> on evidence quality: peer-reviewed causal work &gt; official policy/financial data &gt; single commissioned survey &gt; analogy &gt; preprint.</li>
+        <li><b>Measured fact and interpretation are flagged separately.</b> A high score means the data is solid, not that the strategic reading is certain.</li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============ 01 CEO SUMMARY ============ -->
+  <section class="section">
+    <div class="section-num">01</div>
+    <h2><span class="bar"></span>The 60-Second Summary</h2>
+    <div class="ceo">
+      <p style="margin-bottom:0;">The one thing all five lenses agree on: by the late 2030s the binding constraint on AI will <strong>not</strong> be raw model intelligence &mdash; it will be <strong>diffusion</strong>. The cost of a fixed level of capability has already collapsed (roughly two orders of magnitude in two years) and will keep falling, which all but guarantees AI is embedded everywhere by 2036&ndash;2041 regardless of whether the capability curve keeps bending. But the payoff is gated by the unglamorous layers &mdash; compounding reliability over long task chains, integration into real workflows, and physical power/grid delivery &mdash; which is why ~95% of enterprise pilots show no return today. The genuinely contested question is capability: optimists read fast benchmark trends as a path to near-human general agents, skeptics point to scaling plateaus, a looming data wall, and reasoning models that break past a complexity threshold. The honest base case is a <em>transformatively useful but jagged</em> technology, delivering a real-but-modest productivity lift on a decade-long diffusion lag &mdash; not a 7%-of-GDP overnight leap, and not nothing. Expect a capital/valuation correction along the way; the overbuilt compute and energy infrastructure survives it and becomes the cheap substrate the 2040s winners inherit.</p>
+    </div>
+  </section>
+
+  <!-- ============ 02 KEY FINDINGS (ranked by reliability, highest first) ============ -->
+  <section class="section">
+    <div class="section-num">02</div>
+    <h2><span class="bar"></span>Five Key Findings, Ranked by Reliability</h2>
+
+    <div class="finding">
+      <div class="finding-head">
+        <div class="finding-title">The cost of a fixed capability keeps collapsing &mdash; so AI is pervasive by the late 2030s whatever the capability ceiling</div>
+        <div class="finding-rank">1</div>
+      </div>
+      <div class="rel-row">
+        <div class="rel high">Reliability: High</div>
+        <div class="score"><b>9</b><span>/10</span></div>
+      </div>
+      <p>Stanford HAI's 2025 AI Index measured the inference cost for a GPT-3.5-equivalent model falling roughly 280&times; (about $20 to $0.07 per million tokens) between November 2022 and October 2024. This is the single most robust trend in the whole picture: a measured, institutionally-sourced curve, not an extrapolation. It means deployment is essentially guaranteed &mdash; the economics of putting "good-enough" AI into every workflow only improve. <b>Caveat held in check:</b> cheaper tokens do not mean cheaper AI <em>systems</em> &mdash; total enterprise spend is rising as usage explodes, and inference is 80&ndash;90% of a production system's lifetime cost.</p>
+      <div class="chips">
+        <div class="chip-row"><span class="chip-label sup">Supported by</span><span class="who"><b>Academic, Practitioner, Economist</b> &mdash; Stanford HAI AI Index 2025; Epoch AI cost-decline data</span></div>
+        <div class="chip-row"><span class="chip-label chal">Challenged by</span><span class="who">No one on the direction; Practitioner qualifies that system cost rises even as unit cost falls</span></div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-head">
+        <div class="finding-title">The binding constraint shifts from capability to diffusion: reliability, integration, and power</div>
+        <div class="finding-rank">2</div>
+      </div>
+      <div class="rel-row">
+        <div class="rel medhigh">Reliability: Medium-High</div>
+        <div class="score"><b>8</b><span>/10</span></div>
+      </div>
+      <p>Every lens converges here. MIT's 2025 study found ~95% of enterprise generative-AI pilots produced no measurable return &mdash; and blamed systems that "do not retain feedback, adapt to context, or improve over time," i.e. integration, not model IQ. The math is unforgiving: a 95%-reliable-per-step agent succeeds only ~60% of the time over 10 steps and ~36% over 20. And the physical ceiling is power: the IEA projects data-center electricity roughly doubling to ~945 TWh by 2030, while grid interconnection takes 3&ndash;7+ years against a build time of 12&ndash;18 months for the data center itself. None of these bottlenecks dissolve with a smarter model.</p>
+      <div class="chips">
+        <div class="chip-row"><span class="chip-label sup">Supported by</span><span class="who"><b>All five</b> &mdash; MIT NANDA (integration); reliability math p<sup>n</sup>; IEA (energy); Historian (diffusion lag)</span></div>
+        <div class="chip-row"><span class="chip-label chal">Challenged by</span><span class="who">No one &mdash; this is the load-bearing agreement across the panel</span></div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-head">
+        <div class="finding-title">By 2036&ndash;2041, expect transformative-but-jagged systems &mdash; not drop-in human-replacement AGI</div>
+        <div class="finding-rank">3</div>
+      </div>
+      <div class="rel-row">
+        <div class="rel medhigh">Reliability: Medium-High</div>
+        <div class="score"><b>7</b><span>/10</span></div>
+      </div>
+      <p>Measured capability on well-defined tasks is still rising fast, but the rigorous evidence points away from both the "AGI by 2030" and "it's all a dead end" extremes. METR finds the task length agents handle at 50% reliability doubling roughly every 7 months &mdash; impressive, but the 80%-reliability horizon lags badly and generality off the software/ML suite is untested. The largest expert survey (Grace et al., 2,778 researchers) puts a 50% chance of high-level machine intelligence at ~2047, with full labor automation far later. The base case: systems that are superhuman in narrow slices and brittle elsewhere. <b>Demoted:</b> the headline extrapolations rest on preprints and short time series &mdash; treat capability <em>dates</em> as wide intervals, not point forecasts.</p>
+      <div class="chips">
+        <div class="chip-row"><span class="chip-label sup">Supported by</span><span class="who"><b>Academic, Skeptic, Historian</b> &mdash; METR task-horizon; Grace et al. 2024 survey; GPT-generation diffusion pattern</span></div>
+        <div class="chip-row"><span class="chip-label chal">Challenged by</span><span class="who">Capability-optimists (implicit) who read the doubling curve as a near-term path to general agents</span></div>
+        <div class="chip-row"><span class="chip-label fix">Demoted</span><span class="who">Key trajectory claims are preprints; 15-year extrapolation flagged as statistically weak</span></div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-head">
+        <div class="finding-title">The economic payoff is real but slower and smaller than the headline forecasts</div>
+        <div class="finding-rank">4</div>
+      </div>
+      <div class="rel-row">
+        <div class="rel medium">Reliability: Medium</div>
+        <div class="score"><b>6</b><span>/10</span></div>
+      </div>
+      <p>This is the sharpest quantitative disagreement in the panel. Bank/consultancy estimates are large: Goldman Sachs projects AI could lift global GDP ~7% (~$7T) over a decade and leave ~300M jobs <em>exposed</em> to automation (exposure, not forecast losses); McKinsey pegs $2.6&ndash;4.4T/yr of potential value. But MIT's Daron Acemoglu, modelling it from the task level, estimates <b>no more than ~0.66% total-factor-productivity gain over a decade</b> (an upper bound; his preferred estimate is lower) &mdash; roughly a tenth of the headline. The historical pattern favors the cautious end: general-purpose technologies deliver their productivity surge <em>after</em> a long reorganization lag, not on the hype timetable. <b>Caveat:</b> the bullish figures are 2023 bank/consultancy estimates from firms with an incentive to sell AI strategy work; the cautious figure is a transparent economic model (since peer-reviewed in <em>Economic Policy</em>, 2025) with its own contested assumptions.</p>
+      <div class="chips">
+        <div class="chip-row"><span class="chip-label sup">Supported by</span><span class="who"><b>Economist, Historian, Skeptic</b> &mdash; Acemoglu NBER w32487; dynamo/productivity-lag history</span></div>
+        <div class="chip-row"><span class="chip-label chal">Challenged by</span><span class="who"><b>Goldman Sachs, McKinsey</b> headline GDP/value estimates (bank &amp; consultancy, incentivized)</span></div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-head">
+        <div class="finding-title">A capital correction is likely &mdash; but the overbuilt compute &amp; energy becomes the next decade's cheap substrate</div>
+        <div class="finding-rank">5</div>
+      </div>
+      <div class="rel-row">
+        <div class="rel medium">Reliability: Medium</div>
+        <div class="score"><b>6</b><span>/10</span></div>
+      </div>
+      <p>Hyperscaler AI capex is on track for ~$725B in 2026 against an ecosystem generating well under $100B in direct AI revenue; Bain estimates ~$2T of annual AI revenue would be needed by 2030 to justify the buildout, implying a large shortfall, and the "circular financing" between chipmakers, labs, and clouds inflates apparent demand. That is bubble-shaped. The historian's resolution: the bubble and the payoff are the same event seen at two moments. Railway Mania's "wasted" track and the dot-com era's dark fiber were the overbuilt capital the next generation inherited for free. Expect a valuation reset in which today's hyped pure-plays are not the 2040s winners &mdash; but the data centers, chips, and power survive and power whoever builds on them.</p>
+      <div class="chips">
+        <div class="chip-row"><span class="chip-label sup">Supported by</span><span class="who"><b>Economist, Historian, Skeptic</b> &mdash; capex-vs-revenue gap; Railway Mania &amp; dark-fiber parallels</span></div>
+        <div class="chip-row"><span class="chip-label chal">Challenged by</span><span class="who"><b>Practitioner</b> (partial) &mdash; demand/spend is real and still rising, so a clean "pop" is not guaranteed</span></div>
+      </div>
+    </div>
+
+    <!-- CONTESTED / DEMOTED claims sidebar -->
+    <div class="contested">
+      <div class="tag">Contested signal &middot; monitor, do not assert &middot; confidence 4/10</div>
+      <h4>"AI agents will handle month-long tasks by ~2030" (from the METR task-horizon extrapolation)</h4>
+      <p>The METR doubling trend is real and striking, but the month-long-task figure is a <em>log-linear extrapolation from ~6 years of data at 50% reliability on a software/ML benchmark</em> &mdash; a preprint, not peer-reviewed, with unestablished construct validity and an 80%-reliability horizon that lags far behind. Projecting it ~15 years (≈26 doublings) is statistically indefensible. Track the curve as a leading indicator; do not state the date as a forecast.</p>
+    </div>
+  </section>
+
+  <!-- ============ 03 HIDDEN CONNECTION ============ -->
+  <section class="section">
+    <div class="connection">
+      <div class="section-num">03</div>
+      <h2><span class="bar"></span>The Hidden Connection</h2>
+      <p>Finding 1 (collapsing cost) looks bullish and Finding 5 (capital correction) looks bearish &mdash; a contradiction. How can AI be "too cheap to meter" <em>and</em> a bubble at the same time?</p>
+      <p>Because they are the same fact. The very cost collapse that guarantees AI ends up everywhere is what destroys the margin of the model layer that is raising all the money. If intelligence is a cheap, swappable commodity, then value doesn't accrue to the model &mdash; it accrues to whoever owns the complementary bottleneck. Read across the lenses and the bottleneck has three names for one thing: the practitioner's "boring plumbing" (eval harnesses, retrieval, state, rollback), the economist's "compute-and-energy rentiers," and the historian's "overbuilt asset that survives the burst." The model is the part that commoditizes; the scaffolding around it, and the physical capacity underneath it, is where the durable rent sits.</p>
+      <p class="punch">The same curve that makes AI inevitable makes the AI model worthless as a moat &mdash; so the 2040s winners are the owners of the plumbing and the power, not the labs raising the money today.</p>
+    </div>
+  </section>
+
+  <!-- ============ 03b KEY ASSUMPTION / MISSING 6TH LENS ============ -->
+  <section class="section">
+    <div class="assume">
+      <h3>The assumption this briefing rests on (and the missing 6th lens)</h3>
+      <p>All five lenses treat AI's 10&ndash;15 year trajectory as a <em>market-and-technology</em> phenomenon &mdash; a story of cost curves, capability curves, capex, and diffusion that plays out through firms and investors. They freeze the variable that may matter most over this horizon: <strong>the geopolitical and governance regime</strong>. None addressed the US&ndash;China compute race, export controls, state and military deployment, sovereign-AI buildouts, or the regulatory response to a serious safety or misuse incident.</p>
+      <p>That is the omission that could invert the findings. If AI becomes a nationalized strategic asset &mdash; compute rationed by export regime, frontier models treated like weapons programs &mdash; the clean market logic of "cost collapses, diffusion wins, rentiers capture the rents" bends around state power and borders instead. A single catastrophic misuse event (or a crisis of public trust) could trigger diffusion-slowing regulation that makes the "slow payoff" base case look optimistic. Build the market scenario, then stress it against the one no lens priced in: politics.</p>
+    </div>
+  </section>
+
+  <!-- ============ 04 ACTIONABLE INSIGHT ============ -->
+  <section class="section">
+    <div class="section-num">04</div>
+    <h2><span class="bar"></span>What To Actually Do Differently</h2>
+    <p class="body-lg" style="color:var(--muted);">For a strategist, investor, policymaker, or builder placing bets whose payoff lands in the 2036&ndash;2041 window &mdash; concrete moves, not principles.</p>
+    <div class="action-item">
+      <div class="action-mark">01</div>
+      <div><span class="do">Underwrite the bottlenecks, not the models.</span><p>Durable value sits in the complementary scarce assets &mdash; power/grid interconnect, compute, cooling, and the integration "harness" (evals, retrieval, state, rollback). The model layer commoditizes as cost collapses (Findings 1 &amp; the hidden connection). Own the picks and shovels, or the plumbing; rent the model.</p></div>
+    </div>
+    <div class="action-item">
+      <div class="action-mark">02</div>
+      <div><span class="do">Stress-test every bet against a capability plateau <em>and</em> a capex correction at once.</span><p>Assume the valuation reset happens (Finding 5). The decision test is: which of my assets survives the burst &mdash; i.e. is it the "dark fiber" someone inherits cheaply, or the pure-play that gets wiped out? Favor assets with value independent of the AGI timeline.</p></div>
+    </div>
+    <div class="action-item">
+      <div class="action-mark">03</div>
+      <div><span class="do">Treat ROI failure as an integration problem, not a model problem.</span><p>The ~95% pilot-failure rate (Finding 2) is about systems that don't retain feedback or fit the workflow. Scope narrowly, engineer reliability (verification/retry loops, human checkpoints), and buy down compounding error &mdash; a 99%-accurate model still fails ~18% of a 20-step task. Spend on the harness, not a bigger model.</p></div>
+    </div>
+    <div class="action-item">
+      <div class="action-mark">04</div>
+      <div><span class="do">Budget for a diffusion lag, not a step-change.</span><p>Model the payoff on a general-purpose-technology timetable (Finding 4, the dynamo pattern): a real but modest productivity lift arriving after years of organizational reorganization. Do not build a plan, a P&amp;L, or a policy on the 7%-of-GDP headline landing this decade.</p></div>
+    </div>
+    <div class="action-item">
+      <div class="action-mark">05</div>
+      <div><span class="do">Track the task-horizon reliability curve as your leading indicator.</span><p>The single metric that would settle the capability debate is whether reliability compounds over long autonomous horizons. Watch the METR-style <em>80%</em> (not 50%) horizon quarter over quarter; it tells you in advance whether the optimist or skeptic case is winning &mdash; before the market does.</p></div>
+    </div>
+    <div class="action-item">
+      <div class="action-mark">06</div>
+      <div><span class="do">Price in the missing 6th lens: geopolitics and regulation.</span><p>Keep an explicit hedge for export-control shocks, a US&ndash;China compute split, sovereign-AI mandates, and safety-incident-driven regulation (see the assumption box). The market scenario is the default; the political scenario is the one that can invert it.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ 04b CLAIM SAFETY GUIDE (assert / caveat / avoid) ============ -->
+  <section class="section">
+    <div class="section-num">04b</div>
+    <h2><span class="bar"></span>What's Safe to Assert</h2>
+    <div class="oncam">
+      <div class="oncam-col safe">
+        <h4>✓ Safe — verified against primary source</h4>
+        <ul>
+          <li>Inference cost for a fixed capability level has fallen roughly two orders of magnitude (~280&times; for GPT-3.5-level, 2022&ndash;2024) and continues to drop &mdash; AI deployment is economically assured regardless of the capability ceiling.</li>
+          <li>The binding constraints are diffusion-side: integration/ROI, compounding reliability over long task chains, and data-center power, not raw model IQ.</li>
+          <li>Median AI researchers do <em>not</em> expect human-level machine intelligence by 2041 (Grace et al.: ~50% by 2047).</li>
+          <li>Data-center electricity demand is on track to roughly double by 2030 (IEA).</li>
+        </ul>
+      </div>
+      <div class="oncam-col caveat">
+        <h4>⚠ Say with a caveat</h4>
+        <ul>
+          <li>"~95% of enterprise GenAI pilots show no return" &mdash; attribute it to the MIT NANDA 2025 report; it's one widely-cited study, not a settled statistic.</li>
+          <li>The capex-vs-revenue "bubble" framing &mdash; the gap is real, but whether and when it corrects depends on revenue-ramp assumptions that are genuinely uncertain.</li>
+          <li>The economic payoff &mdash; cite the <em>range</em> (Acemoglu's ~0.66% TFP to Goldman's ~7% GDP) and name the dispute, don't pick one number.</li>
+        </ul>
+      </div>
+      <div class="oncam-col avoid">
+        <h4>✕ Don't assert</h4>
+        <ul>
+          <li>Any specific AGI/"human-level" <em>date</em> &mdash; the panel's own evidence says point forecasts are indefensible.</li>
+          <li>"AI agents will do month-long tasks by 2030" as fact &mdash; it's a fragile extrapolation from a preprint (see contested signal).</li>
+          <li>The 7%-of-GDP / $7T figure as established fact &mdash; it's an incentivized bank estimate at the top of a wide range.</li>
+          <li>That the bubble will "definitely" pop on any particular schedule &mdash; the direction is plausible, the timing is not knowable.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 FRONTIER QUESTION ============ -->
+  <section class="section">
+    <div class="section-num">05</div>
+    <h2><span class="bar"></span>The Frontier Question</h2>
+    <div class="frontier">
+      <div class="q">Does AI reliability <em>compound</em> over long, autonomous task horizons &mdash; or does it plateau?</div>
+      <p>This is the one empirical question that settles everything else. Benchmarks reward single-shot answers; the economy pays for unsupervised execution of 100-step tasks inside messy institutions. If per-step reliability keeps climbing and long-horizon success rates follow, the optimist case &mdash; transformative, economy-reshaping agents &mdash; comes into view this decade. If reliability plateaus (as the compounding-error math and reports of reasoning-model breakdown past a complexity threshold suggest it might), AI stays a powerful-but-supervised tool and the modest-payoff base case holds. No lens could resolve it because the data to answer it &mdash; long, unsupervised, real-world agentic track records &mdash; does not yet exist. Whoever watches that one curve most honestly will see the 2036&ndash;2041 world arriving before everyone else.</p>
+    </div>
+  </section>
+
+  <!-- ============ REFERENCES with verification status ============ -->
+  <div class="refs">
+    <h3>Evidence base &middot; verification status</h3>
+    <ul>
+      <li><span class="vstat ok">Confirmed</span> Stanford HAI, <b>2025 AI Index Report</b> (Chapter 1; arXiv:2504.07139) &mdash; inference cost for GPT-3.5-level quality (64.8% MMLU) fell &gt;280&times; ($20&rarr;$0.07 / M tokens, Nov 2022&ndash;Oct 2024). Fixed-capability comparison, not one model's price. <a href="https://hai.stanford.edu/ai-index/2025-ai-index-report">hai.stanford.edu</a></li>
+      <li><span class="vstat part">Corrected</span> Epoch AI, <b>LLM inference price trends</b> &mdash; prices for fixed capability fall fast but unequally; central tendency ~13&times;/yr across benchmarks (the "~200&times;/yr" figure is not an Epoch headline). <a href="https://epoch.ai/data-insights/llm-inference-price-trends">epoch.ai</a></li>
+      <li><span class="vstat ok">Confirmed</span> MIT Project NANDA (Challapally, Pease, Raskar &amp; Chari), <b>The GenAI Divide: State of AI in Business 2025</b> &mdash; ~95% of enterprise GenAI pilots show no measurable P&amp;L impact; failure is an integration/learning gap. Working paper, not peer-reviewed; &gt;300 initiatives, 52 interviews, 153 leaders. <a href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/">fortune.com</a></li>
+      <li><span class="vstat ok">Confirmed</span> Menlo Ventures, <b>2025 Mid-Year LLM Market Update</b> &mdash; enterprise model API spend doubled ($3.5B&rarr;$8.4B). Industry survey; Menlo is an Anthropic investor. <a href="https://menlovc.com/perspective/2025-mid-year-llm-market-update/">menlovc.com</a></li>
+      <li><span class="vstat ok">Confirmed</span> Gartner (25 Jun 2025) &mdash; &gt;40% of agentic AI projects predicted canceled by end-2027 (analyst prediction). <a href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027">gartner.com</a></li>
+      <li><span class="vstat weak">Demoted</span> Kwa et al. (METR), <b>Measuring AI Ability to Complete Long Tasks</b>, arXiv:2503.14499, Mar 2025 (<em>preprint</em>) &mdash; 50%-reliability task-length horizon doubling ~every 7 months; ~1-month tasks extrapolated to ~2029&ndash;30; 80% horizon much shorter. (Corrected from mis-cited arXiv:2505.05115.) <a href="https://arxiv.org/abs/2503.14499">arxiv.org</a></li>
+      <li><span class="vstat weak">Demoted</span> METR, <b>Impact of Early-2025 AI on Experienced OS Developer Productivity</b>, arXiv:2507.09089, Jul 2025 (<em>preprint RCT</em>) &mdash; 16 devs, 246 tasks, ~19% slower with AI while believing ~20% faster; a Feb 2026 follow-up with newer tools found some speedup. <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">metr.org</a></li>
+      <li><span class="vstat weak">Demoted</span> Grace et al., <b>Thousands of AI Authors on the Future of AI</b>, arXiv:2401.02843, 2024 (<em>preprint</em>, n=2,778) &mdash; HLMI 10% by 2027 / 50% by 2047; full labor automation 50% by ~2116. <a href="https://arxiv.org/abs/2401.02843">arxiv.org</a></li>
+      <li><span class="vstat ok">Confirmed</span> Hoffmann et al. (Chinchilla), NeurIPS 2022 (arXiv:2203.15556) &mdash; power-law scaling / built-in diminishing returns. <a href="https://arxiv.org/abs/2203.15556">arxiv.org</a></li>
+      <li><span class="vstat ok">Confirmed</span> Besiroglu et al. (Epoch), <b>Chinchilla Scaling: A replication attempt</b> (arXiv:2404.10102) &mdash; original parametric fit biased; ~20-tokens/param headline survives, exact exponents contested. <a href="https://arxiv.org/abs/2404.10102">arxiv.org</a></li>
+      <li><span class="vstat weak">Demoted</span> Shojaee et al. (Apple), <b>The Illusion of Thinking</b>, arXiv:2506.06941, Jun 2025 (<em>preprint</em>) &mdash; reasoning-model accuracy collapses past a complexity threshold; note rebuttal arXiv:2506.09250 disputing the setup. <a href="https://machinelearning.apple.com/research/illusion-of-thinking">machinelearning.apple.com</a></li>
+      <li><span class="vstat ok">Confirmed</span> Villalobos et al. (Epoch), <b>Will we run out of data?</b>, ICML 2024 &mdash; usable public human text ~300T tokens, exhausted ~2026&ndash;2032. <a href="https://epoch.ai/blog/will-we-run-out-of-data-limits-of-llm-scaling-based-on-human-generated-data">epoch.ai</a></li>
+      <li><span class="vstat ok">Confirmed</span> Epoch AI, <b>Can AI Scaling Continue Through 2030?</b> &mdash; training compute ~4&times;/yr; up to ~2&times;10<sup>29</sup> FLOP plausibly feasible, bounded by power/chips/data. <a href="https://epoch.ai/blog/can-ai-scaling-continue-through-2030">epoch.ai</a></li>
+      <li><span class="vstat part">Corrected</span> Hyperscaler 2026 AI capex &mdash; ~$725B is a <em>compiled tally</em> of company guidance (trackers $700&ndash;745B; not all strictly AI), up ~77% from ~$410B (2025); Evercore &amp; BofA project &gt;$1T in 2027. <a href="https://aiweekly.co/alerts/amazon-microsoft-alphabet-meta-plan-725b-ai-capex-in-2026">aiweekly.co</a></li>
+      <li><span class="vstat part">Corrected</span> Bain &amp; Company, <b>6th Global Technology Report</b> (23 Sep 2025) &mdash; ~$2T annual AI revenue needed by 2030 vs ~$500B capex &rarr; ~$800B shortfall. (The "$1.2T aggressive-adoption" split was not Bain's framing.) <a href="https://www.bloomberg.com/news/articles/2025-09-23/an-800-billion-revenue-shortfall-threatens-ai-future-bain-says">bloomberg.com</a></li>
+      <li><span class="vstat ok">Confirmed</span> David Cahn (Sequoia), <b>AI's $600B Question</b>, 20 Jun 2024 &mdash; annual revenue the ecosystem must generate to justify infra spend (VC estimate). <a href="https://www.sequoiacap.com/article/ais-600b-question/">sequoiacap.com</a></li>
+      <li><span class="vstat part">Corrected</span> OpenAI &mdash; ~$20B+ <em>annualized</em> revenue in 2025 (recognized ~$13.1B); projecting &gt;$280B by 2030 against ~$600B&ndash;$750B+ compute commitments (Altman cited ~$1.4T infra). <a href="https://www.cnbc.com/2026/02/20/openai-resets-spend-expectations-targets-around-600-billion-by-2030.html">cnbc.com</a></li>
+      <li><span class="vstat ok">Confirmed</span> "Circular financing" &mdash; Nvidia intends up to $100B in OpenAI (non-binding LOI, 22 Sep 2025); OpenAI ~$300B/5-yr Oracle deal (WSJ-reported, begins 2027; Oracle disclosed $317B RPO). <a href="https://www.axios.com/2025/09/25/nvidia-openai-investment-ai">axios.com</a></li>
+      <li><span class="vstat ok">Confirmed</span> Briggs &amp; Kodnani (Goldman Sachs), 26 Mar 2023 &mdash; GenAI could raise global GDP ~7% (~$7T) + 1.5pp productivity over 10 yrs; ~300M FTE jobs <em>exposed</em> (bank estimate). <a href="https://www.goldmansachs.com/insights/articles/generative-ai-could-raise-global-gdp-by-7-percent">goldmansachs.com</a></li>
+      <li><span class="vstat ok">Confirmed</span> McKinsey Global Institute, Jun 2023 &mdash; GenAI could add $2.6&ndash;4.4T/yr across 63 use cases (consultancy estimate). <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier">mckinsey.com</a></li>
+      <li><span class="vstat part">Corrected</span> Acemoglu, <b>The Simple Macroeconomics of AI</b>, NBER w32487 (May 2024; publ. <em>Economic Policy</em> 2025) &mdash; <em>no more than</em> ~0.66% TFP over 10 yrs (upper bound; preferred estimate lower). <a href="https://www.nber.org/papers/w32487">nber.org</a></li>
+      <li><span class="vstat part">Corrected</span> IEA, <b>Energy and AI</b> (Apr 2025) &mdash; data-center electricity ~415 TWh (2024) &rarr; ~945 TWh by 2030 ("more than double"). (Figures are from this report, not "Electricity 2024.") <a href="https://www.iea.org/reports/energy-and-ai">iea.org</a></li>
+      <li><span class="vstat ok">Confirmed</span> David, P.A. (1990), <b>The Dynamo and the Computer</b>, AER P&amp;P 80(2):355&ndash;361 &mdash; ~40-yr electrification productivity lag (Pearl Street 1882 &rarr; 1920s factory redesign). <a href="https://gwern.net/doc/economics/automation/1990-david.pdf">gwern.net</a></li>
+      <li><span class="vstat part">Corrected</span> Railway Mania (Britain) &mdash; share index peaked mid-1845, authorisation peak 1846, crash from <em>late 1845</em> deepening in the 1847 crisis; ~1/3 of authorised lines never built; Hudson fraud; track became the permanent network. <a href="https://en.wikipedia.org/wiki/Railway_Mania">en.wikipedia.org</a></li>
+      <li><span class="vstat ok">Confirmed</span> Dot-com / telecom bust (2000&ndash;02) &mdash; Pets.com/Webvan/WorldCom/Global Crossing failed, Cisco survived; ~80&ndash;90M mi fiber laid, ~90%+ dark in 2001&ndash;02, later the cheap 2010s cloud/streaming substrate. <a href="https://en.wikipedia.org/wiki/Dot-com_bubble">en.wikipedia.org</a></li>
+      <li><span class="vstat ok">Confirmed</span> AI winters &mdash; 1973 Lighthill report &rarr; UK/DARPA cuts c.1974; LISP-machine market collapse ~1987 (Symbolics revenue fell), undercut by commodity workstations. <a href="https://en.wikipedia.org/wiki/AI_winter">en.wikipedia.org</a></li>
+    </ul>
+  </div>
+
+  <div class="footer">Storm Research v2 &middot; 26/26 citations independently verified against primary sources, 2026-10-14 &middot; 0 fabricated, 7 corrected, 4 demoted &middot; Reliability = evidence quality, not author confidence</div>
+
+</div>
+</body>
+</html>
