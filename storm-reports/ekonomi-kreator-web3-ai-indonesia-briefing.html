@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Storm Research: Ekonomi Kreator × Web3 × AI (Indonesia, 2028–2033)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --blue: #2563eb; --blue-dark: #1e3a8a; --ink: #16203a; --muted: #5b6677; --line: #e4e9f2;
+    --bg-soft: #f6f8fc; --green: #15803d; --green-bg: #e9f6ee; --amber: #b45309; --amber-bg: #fdf3e7;
+    --slate: #475569; --slate-bg: #eef1f6; --red: #b91c1c; --red-bg: #fdecec;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Roboto', system-ui, sans-serif; color: var(--ink); background: #eef1f6; line-height: 1.62; font-weight: 400; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 900px; margin: 0 auto; background: #fff; padding: 64px 72px 80px; box-shadow: 0 1px 40px rgba(22,32,58,0.08); }
+  .eyebrow { font-family: 'Roboto Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+  h1 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 18px; }
+  .lede { font-size: 17px; color: var(--muted); max-width: 640px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 26px; padding-top: 22px; border-top: 2px solid var(--line); font-family: 'Roboto Mono', monospace; font-size: 12px; color: var(--muted); }
+  .meta-row b { color: var(--ink); font-weight: 600; }
+  .verify-banner { margin-top: 22px; background: var(--green-bg); border: 1px solid #bfe3cc; border-radius: 8px; padding: 13px 18px; font-size: 13px; color: #14532d; display: flex; gap: 10px; align-items: baseline; }
+  .verify-banner b { font-weight: 700; }
+  .verify-banner .tag { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; background: var(--green); color: #fff; padding: 3px 8px; border-radius: 4px; flex-shrink: 0; }
+  .howto { margin-top: 18px; border: 1px solid var(--line); border-radius: 8px; padding: 18px 22px; background: var(--bg-soft); }
+  .howto h4 { font-family: 'Roboto Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .howto ul { list-style: none; }
+  .howto li { font-size: 13.5px; color: #2b3950; margin-bottom: 7px; padding-left: 16px; position: relative; }
+  .howto li::before { content: "›"; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+  .section { margin-top: 56px; }
+  .section-num { font-family: 'Roboto Mono', monospace; font-size: 13px; font-weight: 600; color: var(--blue); letter-spacing: 0.05em; }
+  h2 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 25px; letter-spacing: -0.01em; color: var(--ink); margin: 6px 0 18px; line-height: 1.2; }
+  h2 .bar { display: inline-block; width: 38px; height: 4px; background: var(--blue); border-radius: 2px; vertical-align: middle; margin-right: 14px; }
+  p { margin-bottom: 14px; }
+  p.body-lg { font-size: 16.5px; }
+  .ceo { background: var(--bg-soft); border-left: 5px solid var(--blue); padding: 26px 30px; border-radius: 4px; font-size: 16.5px; }
+  .ceo strong { font-weight: 700; color: var(--blue-dark); }
+  .finding { border: 1px solid var(--line); border-radius: 10px; padding: 24px 26px; margin-bottom: 18px; position: relative; }
+  .finding-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 12px; }
+  .finding-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); flex: 1; }
+  .finding-rank { font-family: 'Roboto Mono', monospace; font-weight: 600; font-size: 13px; color: #fff; background: var(--ink); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .finding p { font-size: 15px; color: #283449; margin-bottom: 14px; }
+  .rel-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  .rel { display: inline-flex; align-items: center; gap: 9px; font-family: 'Roboto Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; }
+  .rel.high { background: #e7f0fe; color: var(--blue); }
+  .rel.medhigh { background: var(--green-bg); color: var(--green); }
+  .rel.medium { background: var(--amber-bg); color: var(--amber); }
+  .rel.low { background: var(--red-bg); color: var(--red); }
+  .score { font-family: 'Roboto Mono', monospace; font-size: 13px; font-weight: 600; color: var(--ink); }
+  .score b { font-size: 17px; }
+  .score span { color: var(--muted); font-weight: 400; }
+  .chips { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+  .chip-row { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; font-size: 13.5px; }
+  .chip-label { font-family: 'Roboto Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+  .chip-label.sup { background: var(--green-bg); color: var(--green); }
+  .chip-label.chal { background: var(--red-bg); color: var(--red); }
+  .chip-label.fix { background: var(--amber-bg); color: var(--amber); }
+  .chip-row span.who { color: #2b3950; }
+  .chip-row span.who b { font-weight: 600; }
+  .contested { border: 1px dashed var(--amber); background: #fffaf2; border-radius: 10px; padding: 22px 26px; margin-bottom: 18px; }
+  .contested .tag { font-family: 'Roboto Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); }
+  .contested h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; color: var(--ink); margin: 6px 0 10px; }
+  .contested p { font-size: 14px; color: #4a3a22; margin-bottom: 0; }
+  .connection { background: linear-gradient(135deg, #16203a 0%, #1e3a8a 100%); color: #eaf0fb; border-radius: 12px; padding: 34px 38px; }
+  .connection h2 { color: #fff; }
+  .connection h2 .bar { background: #6ea8ff; }
+  .connection .section-num { color: #9ec1ff; }
+  .connection p { color: #d3def3; font-size: 16px; }
+  .connection .punch { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 18px; color: #fff; line-height: 1.4; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.18); }
+  .assume { border: 1px solid var(--line); border-left: 5px solid var(--amber); border-radius: 6px; padding: 24px 28px; background: #fffdf9; }
+  .assume h3 { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+  .assume p { font-size: 15px; color: #3a3320; }
+  .assume p:last-child { margin-bottom: 0; }
+  .action-item { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .action-item:last-child { border-bottom: none; }
+  .action-mark { font-family: 'Roboto Mono', monospace; font-weight: 600; font-size: 13px; color: var(--blue); flex-shrink: 0; width: 34px; }
+  .action-item .do { font-weight: 600; color: var(--ink); }
+  .action-item p { font-size: 14.5px; margin-bottom: 0; color: #2b3950; }
+  .frontier { border: 2px dashed var(--blue); border-radius: 12px; padding: 30px 34px; background: var(--bg-soft); }
+  .frontier .q { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.32; color: var(--blue-dark); margin-bottom: 16px; }
+  .frontier p { font-size: 15px; color: #2b3950; }
+  .oncam { margin-top: 18px; }
+  .oncam-col { border-radius: 10px; padding: 20px 24px; margin-bottom: 14px; }
+  .oncam-col.safe { background: var(--green-bg); border: 1px solid #bfe3cc; }
+  .oncam-col.caveat { background: var(--amber-bg); border: 1px solid #f0d9b5; }
+  .oncam-col.avoid { background: var(--red-bg); border: 1px solid #f3c9c9; }
+  .oncam-col h4 { font-family: 'Roboto Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .oncam-col.safe h4 { color: var(--green); }
+  .oncam-col.caveat h4 { color: var(--amber); }
+  .oncam-col.avoid h4 { color: var(--red); }
+  .oncam-col ul { list-style: none; }
+  .oncam-col li { font-size: 14px; color: #233; margin-bottom: 8px; padding-left: 16px; position: relative; line-height: 1.5; }
+  .oncam-col li::before { content: "•"; position: absolute; left: 0; font-weight: 700; }
+  .oncam-col.safe li::before { color: var(--green); }
+  .oncam-col.caveat li::before { color: var(--amber); }
+  .oncam-col.avoid li::before { color: var(--red); }
+  .refs { margin-top: 56px; padding-top: 26px; border-top: 2px solid var(--line); }
+  .refs h3 { font-family: 'Roboto Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .refs ul { list-style: none; }
+  .refs li { font-size: 12.5px; color: var(--muted); margin-bottom: 11px; padding-left: 16px; position: relative; line-height: 1.5; }
+  .refs li::before { content: "›"; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+  .refs a { color: #34507e; text-decoration: none; }
+  .refs a:hover { text-decoration: underline; }
+  .refs .vstat { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; margin-right: 6px; }
+  .vstat.ok { background: var(--green-bg); color: var(--green); }
+  .vstat.part { background: var(--amber-bg); color: var(--amber); }
+  .vstat.weak { background: var(--red-bg); color: var(--red); }
+  .footer { margin-top: 40px; font-family: 'Roboto Mono', monospace; font-size: 11px; color: #9aa6b8; text-align: center; }
+  @media (max-width: 640px) { .page { padding: 40px 24px 56px; } h1 { font-size: 30px; } }
+  @media print { body { background: #fff; } .page { box-shadow: none; max-width: 100%; padding: 0; } .connection, .oncam-col { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+
+  /* ---- Additions (same palette/fonts) for required comparison tables, 2x2 matrix, scenario cards ---- */
+  table.grid { width: 100%; border-collapse: collapse; margin: 6px 0 14px; font-size: 13px; }
+  table.grid th, table.grid td { border: 1px solid var(--line); padding: 9px 11px; text-align: left; vertical-align: top; }
+  table.grid thead th { background: var(--blue-dark); color: #fff; font-family: 'Roboto Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  table.grid tbody tr:nth-child(even) { background: var(--bg-soft); }
+  table.grid td.rowh { font-weight: 600; color: var(--ink); background: #fafbfe; }
+  table.grid td small { color: var(--muted); }
+  .pill { font-family: 'Roboto Mono', monospace; font-size: 9.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 7px; border-radius: 10px; display: inline-block; }
+  .pill.ap { background: var(--green-bg); color: var(--green); }
+  .pill.dep { background: var(--red-bg); color: var(--red); }
+  .pill.neu { background: var(--slate-bg); color: var(--slate); }
+  .pill.fact { background: #e7f0fe; color: var(--blue); }
+  .pill.trend { background: var(--green-bg); color: var(--green); }
+  .pill.spec { background: var(--amber-bg); color: var(--amber); }
+  .matrix { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0 8px; }
+  .quad { border: 1px solid var(--line); border-top: 5px solid var(--blue); border-radius: 10px; padding: 18px 20px; background: #fff; }
+  .quad.loss { border-top-color: var(--red); }
+  .quad.win { border-top-color: var(--green); }
+  .quad .qx { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .quad h4 { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 8px; line-height: 1.2; }
+  .quad p { font-size: 13px; color: #33415a; margin-bottom: 0; }
+  .axis-note { font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--muted); margin: 2px 0 0; }
+  .scn { border: 1px solid var(--line); border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; }
+  .scn.loss { border-left: 5px solid var(--red); }
+  .scn.win { border-left: 5px solid var(--green); }
+  .scn.mid { border-left: 5px solid var(--blue); }
+  .scn h4 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .scn .coord { font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--blue); letter-spacing: 0.04em; margin-bottom: 12px; }
+  .scn .tl { display: flex; gap: 10px; align-items: baseline; margin-bottom: 9px; font-size: 13.5px; }
+  .scn .yr { font-family: 'Roboto Mono', monospace; font-weight: 600; font-size: 12px; color: #fff; background: var(--ink); padding: 2px 8px; border-radius: 4px; flex-shrink: 0; }
+  .scn .tl.loss .yr { background: var(--red); } .scn .tl.win .yr { background: var(--green); }
+  .scn .tl span.t { color: #2b3950; }
+  .ind { font-size: 13.5px; color: #2b3950; margin: 8px 0 0; padding-left: 16px; position: relative; }
+  .ind::before { content: "▸"; position: absolute; left: 0; color: var(--blue); }
+  .srcnote { font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--muted); }
+  .trap { border: 1px solid var(--line); border-left: 5px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; background: #fffdfd; }
+  .trap.ok { border-left-color: var(--green); background: #fcfefc; }
+  .trap h4 { font-family: 'Montserrat', sans-serif; font-size: 15.5px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .trap p { font-size: 13.5px; color: #33415a; margin-bottom: 0; }
+  .opt { border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; margin-bottom: 11px; }
+  .opt .oh { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; margin-bottom: 5px; }
+  .opt .on { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14.5px; color: var(--ink); }
+  .opt .oc { font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--amber); white-space: nowrap; }
+  .opt p { font-size: 13px; color: #33415a; margin-bottom: 0; }
+  .opt .wins { font-family: 'Roboto Mono', monospace; font-size: 10.5px; color: var(--green); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="eyebrow">Storm Research &middot; v2 (terverifikasi)</div>
+    <h1>Ekonomi Kreator × Web3 × AI: Peta Skenario untuk Kreator Indonesia, 2028–2033</h1>
+    <p class="lede">Sintesis lima lensa — praktisi, akademis, skeptik, ekonom, dan sejarawan. Setiap klaim penting dicek independen terhadap sumber primernya sebelum publikasi. Ini bukan ramalan; ini skenario yang bersaing, dapat diuji, dan dapat dijatuhkan.</p>
+    <div class="meta-row">
+      <span><b>Tanggal</b> &nbsp;22 Oktober 2026</span>
+      <span><b>Metode</b> &nbsp;5 lensa pakar bentukan-penulis + peta kontradiksi + verifikasi sumber primer</span>
+      <span><b>Pembaca</b> &nbsp;Kreator/desainer Indonesia 22 th, YouTube faceless 50k, bertaruh pada anti-AI craft</span>
+    </div>
+    <div class="verify-banner">
+      <span class="tag">Verified</span>
+      <span>Seluruh <b>26</b> sitasi dicek independen terhadap sumber primer pada 22 Okt 2026. <b>Hasil: 1 fabrikasi dikeluarkan, 8 dikoreksi, 5 diturunkan statusnya (demoted).</b> Skor kepercayaan mencerminkan kualitas bukti pasca-verifikasi.</span>
+    </div>
+    <div class="howto">
+      <h4>Cara membaca dokumen ini</h4>
+      <ul>
+        <li><b>Panel dibentuk oleh penulis.</b> Kelima lensa berbagi satu framing; ketika mereka sepakat, perlakukan sebagai hipotesis kuat, bukan bukti independen.</li>
+        <li><b>Kepercayaan diskor 1–10</b> atas kualitas bukti: riset kausal peer-review &gt; data resmi kebijakan/keuangan &gt; survei komisioner tunggal &gt; analogi &gt; preprint.</li>
+        <li><b>Label klaim:</b> <span class="pill fact">Fakta Terverifikasi</span> <span class="pill trend">Tren Teramati</span> <span class="pill spec">Spekulasi</span>. Skor tinggi berarti datanya solid — bukan bahwa pembacaan strategisnya pasti.</li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============ 01 RINGKASAN 60 DETIK ============ -->
+  <section class="section">
+    <div class="section-num">01</div>
+    <h2><span class="bar"></span>Ringkasan 60 Detik</h2>
+    <div class="ceo">
+      <p>Yang sudah pasti (<span class="pill fact">Fakta</span>): untuk kreator Indonesia, AdSense secara struktural tidak cukup — satu view Indonesia bernilai sekitar seperenam view AS — jadi uang nyata ada di brand deal, afiliasi (TikTok Shop), dan penjualan produk langsung berdenominasi USD; angka "40% pekerjaan hilang karena AI 2030" adalah ukuran <em>exposure</em> IMF, bukan <em>penggantian</em> (sekitar separuh justru terkomplementasi). Yang masih diperebutkan: apakah premium "buatan manusia" benar-benar <em>dibayar</em>. Bukti eksperimental menunjukkan premium itu nyata tetapi merupakan efek <em>provenance/keyakinan</em>, bukan efek kualitas — orang nyaris tidak bisa membedakan karya AI dari manusia secara buta — sehingga premium hanya bertahan bila kepengarangan terbukti secara menonjol dan murah. <strong>Taruhan craft anti-AI dan kelas web3-nya sebenarnya satu taruhan yang sama memakai dua kostum: provenance — dan infrastruktur provenance yang murah serta tak-bisa-dilucuti itu hari ini belum ada (label C2PA dilucuti 7 dari 8 platform).</strong> Satu-satunya bagian web3 yang tidak mati adalah lapisan provenance/identitas itu; sebagai aset spekulatif, model token-kreator sudah runtuh. Kesimpulan yang bisa dipakai: menang bukan dari "handmade sebagai perasaan", melainkan dari (a) memiliki hubungan audiens di luar platform, (b) menjual kelangkaan berdenominasi USD, dan (c) membuat <em>proses</em> yang mahal dipalsukan sebagai produk.</p>
+    </div>
+  </section>
+
+  <!-- ============ 02 TIGA WEB3 (Rule 7) ============ -->
+  <section class="section">
+    <div class="section-num">02</div>
+    <h2><span class="bar"></span>Tiga "Web3" yang Tidak Boleh Dicampur</h2>
+    <p style="color:var(--muted);">Kesalahan paling umum dalam pertanyaan ini adalah memperlakukan "web3" sebagai satu benda. Ketiganya punya nasib yang berbeda dan harus dinilai terpisah.</p>
+    <table class="grid">
+      <thead><tr><th style="width:21%">Fungsi web3</th><th>Apa artinya</th><th style="width:16%">Status bukti</th><th>Nasib untuk kreator ini</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="rowh">Rel pembayaran <small>(payment rail)</small></td>
+          <td>Stablecoin/on-chain sebagai cara menerima & mengirim uang lintas negara.</td>
+          <td><span class="pill trend">Tren</span> kepercayaan sedang</td>
+          <td>Peran ekonomi paling defensibel: menangkap USD lintas-batas tanpa spread bank. Tapi di Indonesia, BI melarang kripto sebagai alat bayar; rel domestik adalah QRIS/rupiah.</td>
+        </tr>
+        <tr>
+          <td class="rowh">Aset spekulatif <small>(speculative asset)</small></td>
+          <td>Token kreator, NFT, "fans beli saham kreator".</td>
+          <td><span class="pill fact">Fakta</span> kepercayaan tinggi</td>
+          <td>Model ini sudah <b>runtuh</b> sebagai sumber nafkah: friend.tech, Rally, Nifty's, pasar NFT jatuh tajam. Perlakukan sebagai eksperimen &lt;5%, bukan rel penghasilan.</td>
+        </tr>
+        <tr>
+          <td class="rowh">Lapisan provenance/identitas</td>
+          <td>Sertifikat kepengarangan/keaslian yang dapat diverifikasi (siapa & kapan membuat).</td>
+          <td><span class="pill spec">Spekulasi</span> kepercayaan rendah-sedang</td>
+          <td>Satu-satunya fungsi yang <b>relevan secara strategis</b> bagi taruhan craft-nya — tetapi belum punya pendapatan dan labelnya masih mudah dilucuti. Ini infrastruktur yang belum terbangun.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ 03 LIMA TEMUAN KUNCI ============ -->
+  <section class="section">
+    <div class="section-num">03</div>
+    <h2><span class="bar"></span>Lima Temuan Kunci, Berperingkat Reliabilitas</h2>
+
+    <div class="finding">
+      <div class="finding-head">
+        <div class="finding-title">"40% pekerjaan hilang karena AI pada 2030" adalah angka <em>exposure</em> IMF, bukan penggantian</div>
+        <div class="finding-rank">1</div>
+      </div>
+      <div class="rel-row">
+        <div class="rel high">Reliabilitas: Tinggi</div>
+        <div class="score"><b>9</b><span>/10</span></div>
+      </div>
+      <p>Sumber aslinya adalah IMF Staff Discussion Note SDN/2024/001 (Cazzaniga dkk.) dan blog Direktur Pelaksana Georgieva, 14 Jan 2024: sekitar 40% <em>lapangan kerja global</em> <em>terpapar</em> AI (60% di ekonomi maju, 40% emerging, 26% pendapatan rendah) — dan dari yang terpapar, <b>kira-kira separuh justru diuntungkan oleh komplementaritas</b>, separuh menghadapi tekanan permintaan tenaga kerja. "Terpapar" ≠ "digantikan". <b>Koreksi verifikasi: klaim populer "40% digantikan" salah; demikian pula angka nenek-moyangnya (Frey &amp; Osborne 2013 "47% berisiko") yang dibantah oleh pendekatan berbasis-tugas OECD (~9%).</b></p>
+      <div class="chips">
+        <div class="chip-row"><span class="chip-label sup">Didukung</span><span class="who">Academic (IMF SDN/2024/001; WEF Future of Jobs 2025: net <b>+78 juta</b> pekerjaan, bukan kehilangan neto)</span></div>
+        <div class="chip-row"><span class="chip-label chal">Ditantang</span><span class="who">Tidak ada yang membantah fakta ini; yang diperdebatkan adalah tafsir politis atasnya</span></div>
+        <div class="chip-row"><span class="chip-label fix">Dikoreksi</span><span class="who">Framing "replacement" diganti "exposure"; ditambahkan kontras Frey-Osborne vs OECD</span></div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-head">
+        <div class="finding-title">Model web3 sebagai aset spekulatif untuk kreator sudah runtuh</div>
+        <div class="finding-rank">2</div>
+      </div>
+      <div class="rel-row">
+        <div class="rel medhigh">Reliabilitas: Sedang-Tinggi</div>
+        <div class="score"><b>8</b><span>/10</span></div>
+      </div>
+      <p>Platform "kreator dibayar on-chain" mati karena retensi, bukan karena ide buruk semata: friend.tech melepas kontrol September 2024 setelah pendapatan protokol tipis; Rally (danai ~USD 57 juta) menutup chain-nya Jan 2023 dan menghanguskan aset kreator; pasar NFT jatuh tajam dari puncak 2021–22. Pola ini sesuai dengan siklus mania keuangan historis (ICO 2017: mayoritas tak aktif dalam setahun; rel-nya bertahan, spekulasinya tidak). <b>Catatan: beberapa angka pasar (ukuran persis jatuhnya NFT, MAU Farcaster) adalah estimasi pelacak pihak ketiga, bukan data resmi.</b></p>
+      <div class="chips">
+        <div class="chip-row"><span class="chip-label sup">Didukung</span><span class="who">Skeptic, Practitioner, Economist, Historian (friend.tech, Rally/decrypt, EY ICO study)</span></div>
+        <div class="chip-row"><span class="chip-label chal">Ditantang</span><span class="who">Sebagian: "terlalu dini" — infrastruktur bisa bertahan meski token mati (Historian)</span></div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-head">
+        <div class="finding-title">Premium "buatan manusia" itu efek <em>provenance/keyakinan</em>, bukan efek kualitas</div>
+        <div class="finding-rank">3</div>
+      </div>
+      <div class="rel-row">
+        <div class="rel medhigh">Reliabilitas: Sedang-Tinggi</div>
+        <div class="score"><b>7</b><span>/10</span></div>
+      </div>
+      <p>Studi peer-review (Bellaiche dkk., <em>Cognitive Research</em> 2023) menemukan karya identik dinilai lebih tinggi hanya karena dilabeli "buatan manusia" (efek usaha + narasi yang dipersepsikan, terutama pada liking/beauty). Pada survei buta besar (Astral Codex Ten, ~11rb responden, Nov 2024 — <b>survei blog sampel-memilih-sendiri, bukan peer-review</b>), orang hanya ~60,6% benar menebak AI vs manusia, dan 6 dari 10 karya terfavorit justru AI. Implikasinya: premium bertahan hanya jika kepengarangan dibuat menonjol dan kredibel — bukan karena tangan menghasilkan sesuatu yang objektif lebih baik.</p>
+      <div class="chips">
+        <div class="chip-row"><span class="chip-label sup">Didukung</span><span class="who">Academic (Bellaiche 2023, peer-review), Historian (scarcity+provenance+story), Practitioner</span></div>
+        <div class="chip-row"><span class="chip-label chal">Ditantang</span><span class="who">Skeptic: premium menguap di titik bayar (lihat sinyal diperdebatkan di bawah)</span></div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-head">
+        <div class="finding-title">Di Indonesia, pelemahan rupiah adalah subsidi ekspor tersembunyi bagi kreator yang dibayar USD</div>
+        <div class="finding-rank">4</div>
+      </div>
+      <div class="rel-row">
+        <div class="rel medhigh">Reliabilitas: Sedang-Tinggi</div>
+        <div class="score"><b>7</b><span>/10</span></div>
+      </div>
+      <p>CPM Tier-3 (~USD 0,5–1,5; satu view ≈ 16% nilai view AS — <b>estimasi vendor, bukan data resmi YouTube</b>) membuat AdSense mustahil mencapai target. Sementara rupiah menembus ~Rp17.000/USD (April 2025, terlemah sejak 1998) menuju ~Rp17.800+/USD. Kreator yang biaya & tenaganya dalam rupiah tetapi penghasilannya USD mendapat margin struktural yang tak ditawarkan model berbasis-iklan maupun yang bisa direplikasi AI. USD 1.000/bulan jauh lebih realistis lewat ~40–70 penjualan/patron USD 15–25 ketimbang lewat jutaan view beriklan.</p>
+      <div class="chips">
+        <div class="chip-row"><span class="chip-label sup">Didukung</span><span class="who">Economist (Goldman 2023; e-Conomy SEA 2024; kurs databoks/CSIS), Practitioner, Skeptic</span></div>
+        <div class="chip-row"><span class="chip-label chal">Ditantang</span><span class="who">Sisi permintaan domestik (lensa ke-6 yang hilang) — WTP produk digital di dalam negeri belum terbukti</span></div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-head">
+        <div class="finding-title">Tata-kelola platform kini ikut <em>menegakkan</em> premium manusia — tapi penegakannya berpori</div>
+        <div class="finding-rank">5</div>
+      </div>
+      <div class="rel-row">
+        <div class="rel medium">Reliabilitas: Sedang</div>
+        <div class="score"><b>6</b><span>/10</span></div>
+      </div>
+      <p>Aturan "inauthentic / mass-produced content" YouTube yang berlaku ~15 Juli 2025 membuat konten massal-repetitif tidak layak monetisasi (menjadi faceless tetap boleh) — secara efektif mendemonetisasi sebagian pesaing AI-slop si kreator. Tetapi pada saat bersamaan, kanal AI-slop masih memonetisasi dalam skala besar, jadi penegakan ini belum terbukti efektif. Ini variabel kebijakan yang bisa berubah arah dengan cepat.</p>
+      <div class="chips">
+        <div class="chip-row"><span class="chip-label sup">Didukung</span><span class="who">Practitioner (kebijakan YouTube Jul 2025)</span></div>
+        <div class="chip-row"><span class="chip-label chal">Ditantang</span><span class="who">Skeptic (analisis Kapwing: kanal AI tetap meraup pendapatan iklan besar)</span></div>
+      </div>
+    </div>
+
+    <div class="contested">
+      <div class="tag">Sinyal diperdebatkan &middot; pantau, jangan nyatakan sebagai fakta &middot; kepercayaan 4/10</div>
+      <h4>Apakah premium "buatan manusia" berubah menjadi kesediaan-membayar (willingness-to-pay) nyata?</h4>
+      <p>Di sinilah lensa paling bertabrakan. Studi Abel &amp; Johnson menemukan label "AI" menurunkan <em>rating</em> fiksi tetapi <b>tidak</b> menurunkan uang/waktu yang dikeluarkan pembaca — preferensi yang dinyatakan ≠ perilaku nyata. Angka "72,9% bersedia bayar lebih" berasal dari preprint (belum peer-review) dan bersifat <em>stated preference</em>. Label provenance C2PA/Content Credentials dilucuti oleh 7 dari 8 platform saat diuji. Kesimpulan jujur: premium <em>sikap</em> ada, premium <em>dompet</em> belum terbukti pada skala dan belum punya infrastruktur yang bertahan. Jangan menjual ini ke sponsor sebagai fakta.</p>
+    </div>
+  </section>
+
+  <!-- ============ 04 MATRIKS 2x2 ============ -->
+  <section class="section">
+    <div class="section-num">04</div>
+    <h2><span class="bar"></span>Matriks Skenario 2×2</h2>
+    <p style="color:var(--muted);"><b>Sumbu A — Di mana nilai mengendap:</b> Rel tertutup (platform jadi gerbang) ↔ Rel terbuka (protokol/langsung). &nbsp; <b>Sumbu B — Apa yang diberi imbalan audiens:</b> Karya manusia premium ↔ Volume & biaya rendah (konten AI menang).</p>
+    <div class="matrix">
+      <div class="quad win">
+        <div class="qx">Tertutup × Premium manusia</div>
+        <h4>Menara Terverifikasi</h4>
+        <p>Platform jadi gerbang; kreator "manusia terverifikasi" menjadi tier mewah yang ditegakkan platform (label keaslian + monetisasi bersyarat).</p>
+      </div>
+      <div class="quad loss">
+        <div class="qx">Tertutup × AI menang</div>
+        <h4>Ladang Algoritma <span class="pill dep" style="vertical-align:middle">craft kalah telak</span></h4>
+        <p>Platform punya mesin konten AI sendiri; kreator jadi buruh komoditas. Inilah skenario di mana taruhan anti-AI craft kalah paling keras.</p>
+      </div>
+      <div class="quad win">
+        <div class="qx">Terbuka × Premium manusia</div>
+        <h4>Patronase Berdaulat</h4>
+        <p>Rel terbuka + stablecoin + provenance on-chain memungkinkan patronase langsung; sertifikat kelangkaan jadi bernilai. Kuadran paling ramah bagi craft + web3.</p>
+      </div>
+      <div class="quad">
+        <div class="qx">Terbuka × AI menang</div>
+        <h4>Rimba Atensi</h4>
+        <p>Siapa pun bisa menghasilkan apa pun; atensi &amp; kepemilikan distribusi jadi satu-satunya aset langka. Craft hanyalah gaya, bukan parit.</p>
+      </div>
+    </div>
+    <p class="axis-note">Narasi tiap kuadran pada tiga titik waktu di bawah. Nama kuadran adalah milik kami, bukan istilah baku.</p>
+
+    <div class="scn win">
+      <h4>A. Menara Terverifikasi</h4>
+      <div class="coord">Rel tertutup · Premium manusia</div>
+      <div class="tl win"><span class="yr">2028</span><span class="t">YouTube/TikTok/Meta memperluas label pengungkapan-AI & "verified human"; brand mulai membuat tier sponsor "human-made". Si kreator, dengan proses tangan yang terverifikasi, masuk daftar putih lebih awal.</span></div>
+      <div class="tl win"><span class="yr">2030</span><span class="t">Monetisasi & jangkauan mulai terikat ke atestasi keaslian. Channel dengan proses terbukti menikmati RPM premium; AI-slop generik didemonetisasi. 50k subs terverifikasi bernilai jauh lebih besar dari 500k subs anonim.</span></div>
+      <div class="tl win"><span class="yr">2033</span><span class="t">"Manusia terverifikasi" menjadi kategori harga permanen, seperti organik/fair-trade. Parit si kreator bukan gayanya, melainkan statusnya sebagai entitas tepercaya di dalam gerbang platform.</span></div>
+    </div>
+
+    <div class="scn loss">
+      <h4>B. Ladang Algoritma — <span style="color:var(--red)">skenario craft kalah telak</span></h4>
+      <div class="coord">Rel tertutup · AI menang</div>
+      <div class="tl loss"><span class="yr">2028</span><span class="t">Platform menyematkan generator asli (teks-ke-video sinematik) di dalam feed dan mengutamakan konten yang dibuat dengan tool mereka. Aturan "inauthentic" ada di atas kertas tapi penegakannya berpori; AI-slop tetus meraup pendapatan iklan.</span></div>
+      <div class="tl loss"><span class="yr">2030</span><span class="t">AI mampu meniru estetika gambar-tangan <em>dan proses</em>-nya (timelapse palsu). Biaya konten pesaing ~nol; CPM niche generik runtuh karena pasokan meledak. Ilustrasi tangan yang lambat tenggelam secara algoritmik; keunikan gaya bukan lagi parit.</span></div>
+      <div class="tl loss"><span class="yr">2033</span><span class="t">Platform mengambil porsi lebih besar lewat konten milik-sendiri; pembayaran kreator ditekan. "Buatan manusia" jadi klaim tak terverifikasi yang diabaikan algoritma. Nilai craft runtuh ke lantai komoditas — sama seperti microstock menggerus fotografer mid-tier.</span></div>
+    </div>
+
+    <div class="scn mid">
+      <h4>C. Patronase Berdaulat</h4>
+      <div class="coord">Rel terbuka · Premium manusia</div>
+      <div class="tl"><span class="yr">2028</span><span class="t">Rel stablecoin untuk kreator matang; platform direct-to-fan (Patreon/Ko-fi/Gumroad/Substack) menambah fitur provenance. Beberapa marketplace mulai menampilkan atestasi kepengarangan yang sulit dilucuti.</span></div>
+      <div class="tl"><span class="yr">2030</span><span class="t">Muncul premium WTP terukur untuk karya ber-provenance di marketplace nyata (bukan sekadar survei). Si kreator menjual kelangkaan ber-sertifikat langsung ke patron USD; web3 berperan sebagai lapisan provenance + leg stablecoin, bukan sebagai token spekulatif.</span></div>
+      <div class="tl"><span class="yr">2033</span><span class="t">Provenance menjadi sertifikat kelangkaan standar; craft + provenance adalah posisi menang. Tapi, seperti Arts &amp; Crafts, ini tier premium bervolume-niche yang mahal — bukan pasar massal.</span></div>
+    </div>
+
+    <div class="scn">
+      <h4>D. Rimba Atensi</h4>
+      <div class="coord">Rel terbuka · AI menang</div>
+      <div class="tl"><span class="yr">2028</span><span class="t">Model video/gambar open-source mencapai paritas; distribusi terfragmentasi. Nasihat pertumbuhan para kreator top bergeser eksplisit ke "miliki distribusimu" (email, komunitas) karena jangkauan platform tak bisa diandalkan.</span></div>
+      <div class="tl"><span class="yr">2030</span><span class="t">Konten AI membanjiri setiap protokol terbuka; label provenance diabaikan/dilucuti massal. Atensi jadi satu-satunya kelangkaan. Craft bertahan hanya sebagai penanda identitas satu kreator tertentu, bukan sebagai kategori.</span></div>
+      <div class="tl"><span class="yr">2033</span><span class="t">Biaya meraih atensi (CPM iklan) naik meski pasokan konten tak terbatas. Yang menang adalah pemilik hubungan audiens langsung + lini produk digital — bukan pembuat yang paling terampil. Daftar email mengalahkan keterampilan.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 05 SKILLS × SKENARIO ============ -->
+  <section class="section">
+    <div class="section-num">05</div>
+    <h2><span class="bar"></span>Keterampilan Kreator × 4 Skenario</h2>
+    <p style="color:var(--muted);"><span class="pill ap">naik</span> apresiasi &nbsp; <span class="pill dep">turun</span> depresiasi &nbsp; <span class="pill neu">netral</span>. Satu kalimat alasan per sel.</p>
+    <table class="grid">
+      <thead><tr><th style="width:17%">Keterampilan</th><th>A. Menara Terverifikasi</th><th>B. Ladang Algoritma</th><th>C. Patronase Berdaulat</th><th>D. Rimba Atensi</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="rowh">Motion graphics (AE)</td>
+          <td><span class="pill neu">netral</span> Berguna tapi nilai bergeser ke bagian yang terbukti-manusia.</td>
+          <td><span class="pill dep">turun</span> Persis yang dikomoditaskan tool teks-ke-video.</td>
+          <td><span class="pill ap">naik</span> Motion bespoke untuk patron/brand dibayar premium.</td>
+          <td><span class="pill dep">turun</span> Semua orang bisa generate; jadi standar minimum.</td>
+        </tr>
+        <tr>
+          <td class="rowh">Ilustrasi tangan</td>
+          <td><span class="pill ap">naik</span> Paling bisa dibuktikan manusia; cocok jadi tier mewah.</td>
+          <td><span class="pill dep">turun</span> Lambat &amp; tenggelam saat audiens memilih volume murah.</td>
+          <td><span class="pill ap">naik</span> Aset langka inti yang bisa di-provenance-kan untuk patron.</td>
+          <td><span class="pill neu">netral</span> Gaya khas tembus, tapi distribusi lebih menentukan dari keterampilan.</td>
+        </tr>
+        <tr>
+          <td class="rowh">Video editing</td>
+          <td><span class="pill neu">netral</span> Masih perlu merakit footage terverifikasi.</td>
+          <td><span class="pill dep">turun</span> Auto-editing AI menggerus harga.</td>
+          <td><span class="pill neu">netral</span> Jasa ke patron, tapi harga ditekan AI-assist.</td>
+          <td><span class="pill dep">turun</span> Editing AI di mana-mana.</td>
+        </tr>
+        <tr>
+          <td class="rowh">Graphic design</td>
+          <td><span class="pill neu">netral</span> Perlu, tapi mudah ditiru; nilai di keaslian prosesnya.</td>
+          <td><span class="pill dep">turun</span> Output yang paling cepat didorong ke biaya nol.</td>
+          <td><span class="pill neu">netral</span> Kerja brand bespoke bertahan di kelas atas.</td>
+          <td><span class="pill dep">turun</span> Komoditas; generator desain instan.</td>
+        </tr>
+        <tr>
+          <td class="rowh">Literasi web3</td>
+          <td><span class="pill neu">netral</span> Provenance kemungkinan dijalankan platform, bukan web3.</td>
+          <td><span class="pill dep">turun</span> Nyaris tak relevan di dunia platform-AI.</td>
+          <td><span class="pill ap">naik</span> Langsung bisa diuangkan: stablecoin + provenance on-chain.</td>
+          <td><span class="pill neu">netral</span> Berguna sebatas rel pembayaran; provenance tak bernilai.</td>
+        </tr>
+        <tr>
+          <td class="rowh">Mandarin (HSK4)</td>
+          <td><span class="pill neu">netral</span> Akses klien/platform Tiongkok, tak tergantung skenario.</td>
+          <td><span class="pill neu">netral</span> Akses ekosistem tooling AI terbesar (Tiongkok) + lokalisasi.</td>
+          <td><span class="pill ap">naik</span> Akses patron/pasar Tiongkok lintas-batas.</td>
+          <td><span class="pill neu">netral</span> Arbitrase bahasa. <small>Catatan: HSK4 masih di bawah tingkat profesional — ini opsi jangka panjang.</small></td>
+        </tr>
+        <tr>
+          <td class="rowh">Audiens 50k</td>
+          <td><span class="pill ap">naik</span> Audiens-manusia terverifikasi = emas di tier mewah.</td>
+          <td><span class="pill dep">turun</span> Tergerus algoritma — <em>kecuali</em> dipindah ke kanal milik sendiri.</td>
+          <td><span class="pill ap">naik</span> Modal dasar untuk mengonversi patron langsung.</td>
+          <td><span class="pill ap">naik</span> Di rimba atensi, audiens yang dimiliki = aset paling langka.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="srcnote">Pola kunci: nilai "Audiens 50k" bertahan di B dan D <em>hanya</em> jika hubungan dimiliki di luar platform (email). Keterampilan produksi (motion/editing/graphic) cenderung turun saat AI menang; yang bertahan adalah bukti-proses + hubungan + provenance.</p>
+  </section>
+
+  <!-- ============ 06 INDIKATOR DINI ============ -->
+  <section class="section">
+    <div class="section-num">06</div>
+    <h2><span class="bar"></span>Indikator Dini (6–18 bulan, dapat dijatuhkan)</h2>
+    <p style="color:var(--muted);">Masing-masing dapat diamati sebelum pertengahan 2028 dan punya kondisi gagal yang jelas.</p>
+
+    <div class="scn win">
+      <h4>A. Menara Terverifikasi — yang harus naik</h4>
+      <p class="ind">Platform besar mengaitkan monetisasi/jangkauan ke verifikasi-manusia atau pengungkapan-AI. <span class="srcnote">Pantau: YouTube Help (monetization policies), TikTok/Meta newsroom.</span></p>
+      <p class="ind">C2PA/Content Credentials menjadi default di unggahan Adobe/YouTube <em>dan benar-benar ditampilkan</em> di titik penemuan. <span class="srcnote">Pantau: c2pa.org, Adobe newsroom, Content Authenticity Initiative.</span></p>
+      <p class="ind">Brand meluncurkan tier sponsor/"verified creator" khusus human-made. <span class="srcnote">Pantau: Tubefilter, Business of Apps, Influencer Marketing Hub.</span></p>
+    </div>
+
+    <div class="scn loss">
+      <h4>B. Ladang Algoritma — yang harus naik</h4>
+      <p class="ind">Platform merilis generator asli (mis. integrasi video generatif) & pangsa konten AI di feed rekomendasi terus naik. <span class="srcnote">Pantau: blog produk YouTube/TikTok; audit gaya Kapwing.</span></p>
+      <p class="ind">Kanal AI-generated terus memonetisasi meski ada aturan "inauthentic" — penegakan terbukti berpori. <span class="srcnote">Pantau: laporan penegakan monetisasi, Search Engine Journal.</span></p>
+      <p class="ind">CPM niche generik turun saat pasokan meledak. <span class="srcnote">Pantau: laporan RPM kreator, Social Blade, forum kreator.</span></p>
+    </div>
+
+    <div class="scn mid">
+      <h4>C. Patronase Berdaulat — yang harus naik</h4>
+      <p class="ind">OJK/BI membuka jalur stablecoin lintas-batas yang bisa dipakai kreator Indonesia (atau Stripe/PayPal membayar payout stablecoin ke Indonesia). <span class="srcnote">Pantau: siaran OJK, Bank Indonesia, blog Stripe/PayPal.</span></p>
+      <p class="ind">Provenance on-chain mendapat pemakaian konsumen <em>non-spekulatif</em> yang bertahan (bukan flipping). <span class="srcnote">Pantau: dashboard Dune untuk Base/Zora mints, blog Patreon/Gumroad.</span></p>
+      <p class="ind">Premium WTP ber-provenance terukur di marketplace nyata (eksperimen lapangan, bukan survei). <span class="srcnote">Pantau: data Etsy, studi lapangan akademis.</span></p>
+    </div>
+
+    <div class="scn">
+      <h4>D. Rimba Atensi — yang harus naik</h4>
+      <p class="ind">Model video/gambar open-source mencapai paritas & nasihat kreator top bergeser eksplisit ke "miliki distribusimu". <span class="srcnote">Pantau: newsletter Lenny's, podcast kreator, rilis model open-source.</span></p>
+      <p class="ind">Label provenance diabaikan/dilucuti dalam skala besar. <span class="srcnote">Pantau: uji ulang gaya Washington Post terhadap C2PA, perilaku platform.</span></p>
+      <p class="ind">Biaya atensi (CPM iklan) naik sementara pasokan konten tak terbatas. <span class="srcnote">Pantau: tren CPM iklan Meta/Google, laporan agensi.</span></p>
+    </div>
+  </section>
+
+  <!-- ============ 07 HIDDEN CONNECTION ============ -->
+  <section class="section">
+    <div class="connection">
+      <div class="section-num">07</div>
+      <h2><span class="bar"></span>Koneksi Tersembunyi</h2>
+      <p>Dua temuan tampak berlawanan: Temuan 2 bilang <em>"web3 untuk kreator sudah mati"</em>, sementara Temuan 3 bilang premium buatan-manusia <em>hanya</em> bertahan jika ada lapisan verifikasi kepengarangan yang murah dan menonjol.</p>
+      <p>Resolusinya hanya terlihat ketika kelima lensa ditumpuk: satu-satunya bagian web3 yang <em>tidak</em> mati persis adalah lapisan provenance/identitas — dan itulah justru infrastruktur yang dibutuhkan premium buatan-manusia untuk bertahan. Jadi "taruhan craft" dan "kelas web3" bukan dua taruhan yang berlawanan; keduanya satu taruhan yang sama: <em>provenance</em>.</p>
+      <p class="punch">Parit craft-nya dan kelas web3-nya adalah satu lindung-nilai yang sama memakai dua kostum — dan lindung-nilai itu hari ini masih berupa infrastruktur yang belum terbangun (label C2PA masih dilucuti 7 dari 8 platform). Bergantung pada temuan reliabilitas-sedang; perlakukan sebagai hipotesis kuat, bukan kepastian.</p>
+    </div>
+  </section>
+
+  <!-- ============ 08 NO-REGRET MOVES ============ -->
+  <section class="section">
+    <div class="section-num">08</div>
+    <h2><span class="bar"></span>No-Regret Moves — menang di KEEMPAT skenario</h2>
+    <p class="body-lg" style="color:var(--muted);">Bagian terpenting dari seluruh dokumen. Ini langkah yang bayar di Menara Terverifikasi, Ladang Algoritma, Patronase Berdaulat, maupun Rimba Atensi — jadi kerjakan lebih dulu, apa pun yang terjadi.</p>
+    <div class="action-item">
+      <div class="action-mark">01</div>
+      <div><span class="do">Pindahkan hubungan audiens ke luar platform sekarang (email list + WhatsApp/Discord, kontak langsung).</span><p>Ini langkah paling menanggung beban. Tier mewah butuh patron langsung; dunia Ladang Algoritma menuntut jalan keluar dari algoritma; Patronase butuh daftar itu; Rimba Atensi menjadikan daftar itu satu-satunya aset langka. Ini juga jawaban Skeptic: yang tak bisa dilucuti label, token, atau algoritma mana pun adalah hubungan langsung yang kamu miliki.</p></div>
+    </div>
+    <div class="action-item">
+      <div class="action-mark">02</div>
+      <div><span class="do">Bangun lini pendapatan langsung berdenominasi USD (produk digital via Gumroad/Ko-fi/Stripe, atau brand deal lintas-batas).</span><p>Menangkap subsidi-ekspor rupiah (Temuan 4), lepas dari CPM, dan berlaku di keempat skenario. Matematika target: ~40–70 transaksi/patron USD 15–25 per bulan ≈ USD 1.000 — jauh lebih dekat daripada jutaan view AdSense Tier-3.</p></div>
+    </div>
+    <div class="action-item">
+      <div class="action-mark">03</div>
+      <div><span class="do">Jadikan <em>proses</em> sebagai produk, dan buat ia mahal untuk dipalsukan; adopsi Content Credentials/C2PA mulai sekarang.</span><p>Timelapse, livestream menggambar, artefak fisik, dokumentasi tahap. Di Menara ia jadi parit, di Patronase jadi aset provenance, di Ladang/Rimba minimal jadi pembeda & dasar brand deal. Biaya rendah, opsi besar — dan satu-satunya hal yang membuat klaim "buatan manusia" bisa diverifikasi.</p></div>
+    </div>
+    <div class="action-item">
+      <div class="action-mark">04</div>
+      <div><span class="do">Pakai AI sebagai leverage back-office (riset, bantu skrip, alur kerja), pertahankan output kreatif tetap manusia.</span><p>Daya-tawar harga yang paling tahan lama ada di sisi terbukti-manusia + hubungan. Memakai AI untuk memangkas waktu produksi menaikkan margin di semua skenario tanpa mengorbankan parit. Ini sudah selaras dengan posisimu sekarang.</p></div>
+    </div>
+    <div class="action-item">
+      <div class="action-mark">05</div>
+      <div><span class="do">Diversifikasi penghasilan ke brand deal + afiliasi (TikTok Shop) dalam rupiah sejak sekarang.</span><p>Di setiap skenario, mayoritas uang kreator datang dari brand/afiliasi, bukan AdSense. TikTok Shop sudah menjadi porsi besar e-commerce Indonesia; ini arus kas jangka-pendek yang mendanai taruhan jangka-panjang.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ 09 OPTION BETS ============ -->
+  <section class="section">
+    <div class="section-num">09</div>
+    <h2><span class="bar"></span>Option Bets — murah, bayar besar di SATU skenario</h2>
+    <div class="opt">
+      <div class="oh"><span class="on">Set-up provenance on-chain + payout stablecoin (mint koleksi kecil, dompet, uji alur)</span><span class="oc">~20–40 jam + ~USD 50–100 biaya</span></div>
+      <p>Mengubah kelas web3-mu dari teori jadi otot. <span class="wins">Menang besar di: C. Patronase Berdaulat.</span> Nyaris tak berguna di B (Ladang Algoritma).</p>
+    </div>
+    <div class="opt">
+      <div class="oh"><span class="on">Kuasai dalam satu tool AI-produksi (mis. jadi "orang yang bisa motion AI-assisted untuk klien web3")</span><span class="oc">~40–80 jam</span></div>
+      <p>Lindung-nilai justru untuk skenario di mana craft kalah. <span class="wins">Menang di: B. Ladang Algoritma.</span> Arah karier (a) hidup di sini.</p>
+    </div>
+    <div class="opt">
+      <div class="oh"><span class="on">Channel personal-brand Bahasa Indonesia (Gen Z/AI/komentar budaya) + produk digital</span><span class="oc">waktu (pakai ulang skill)</span></div>
+      <p>Mengubah "audiens + distribusi" menjadi mesin produk digital. <span class="wins">Menang di: D. Rimba Atensi (dan sebagian A).</span> Jebakan bila mengkanibal parit craft — lihat bagian Jebakan untuk risiko sudut "konspirasi".</p>
+    </div>
+    <div class="opt">
+      <div class="oh"><span class="on">Mandarin ke tingkat profesional (lampaui HSK4)</span><span class="oc">besar: ~1–2 tahun</span></div>
+      <p>Akses pasar/patron & tooling Tiongkok. <span class="wins">Menang di: C (lintas-batas) & sebagian B (akses tooling).</span> HSK4 saja sub-profesional — ini opsi jangka-panjang berbiaya tinggi, bukan pembayaran dekat.</p>
+    </div>
+  </section>
+
+  <!-- ============ 10 TRAPS + arah (a)(b)(c) ============ -->
+  <section class="section">
+    <div class="section-num">10</div>
+    <h2><span class="bar"></span>Jebakan — terlihat cerdas, hanya bekerja di satu skenario</h2>
+    <div class="trap">
+      <h4>Jebakan 1 — Craft murni tanpa kepemilikan distribusi & tanpa verifikasi</h4>
+      <p>Ini mode kegagalan dari taruhan utamamu sendiri. Kalah di B (Ladang Algoritma) dan D (Rimba Atensi): tanpa daftar email dan tanpa label yang menonjol, "buatan manusia" adalah klaim tak-terverifikasi yang menguap di titik bayar. Craft tanpa provenance + distribusi = cara yang lebih lambat & mahal untuk membuat konten komoditas.</p>
+    </div>
+    <div class="trap">
+      <h4>Jebakan 2 — Menjadikan web3/NFT sebagai rel penghasilan utama</h4>
+      <p>Hanya bekerja di C. Mati di A dan B, marginal di D. Model token-kreator sudah runtuh (Temuan 2). Perlakukan sebagai option bet &lt;5%, bukan fondasi.</p>
+    </div>
+    <div class="trap">
+      <h4>Jebakan 3 — Mengejar skala AdSense on-platform sebagai tujuan</h4>
+      <p>Tidak benar-benar bekerja di skenario mana pun untuk kreator Tier-3: platform ambil 45%, lalu CPM ~1/6 AS. Menjual atensi berharga-rupiah yang lemah adalah jebakan struktural.</p>
+    </div>
+
+    <h2 style="font-size:20px; margin-top:34px;"><span class="bar"></span>Tiga arah karier yang kamu timbang</h2>
+    <table class="grid">
+      <thead><tr><th style="width:20%">Arah</th><th>Menang di</th><th>Elemen jebakan</th><th style="width:16%">Putusan</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="rowh">(a) Desainer grafis/motion + AI untuk klien web3/blockchain</td>
+          <td>B (Ladang Algoritma) & C (Patronase) — di mana klien web3 + produksi AI-assisted membayar.</td>
+          <td>Bergantung pada pasar klien web3 yang hidup (butuh kebangkitan aset-spekulatif), dan menerima harga komoditas; motion/graphic adalah yang justru dikomoditaskan AI — balapan melawan tool-mu sendiri.</td>
+          <td>Lindung kas yang <b>layak</b>, bukan parit. Risiko sedang.</td>
+        </tr>
+        <tr>
+          <td class="rowh">(b) Video editor khusus kreator AI/web3/crypto</td>
+          <td>B & D — banyak kreator, butuh editing; kas cepat.</td>
+          <td>Video editing tinggi di daftar otomatisasi-AI; ini menyewakan waktu ke keterampilan yang terdepresiasi, dan mengikat penghasilan ke siklus boom/bust konten crypto.</td>
+          <td>Kas sekarang, <b>tergerus</b>. Jangan jadikan identitas.</td>
+        </tr>
+        <tr>
+          <td class="rowh">(c) Personal brand Bahasa Indonesia (Gen Z/AI/budaya/konspirasi sbg hiburan) + produk digital</td>
+          <td>D (Rimba Atensi) & A — kepribadian + audiens dimiliki + produk digital = tulang punggung no-regret.</td>
+          <td>Sudut "konspirasi sebagai hiburan" adalah racun brand-safety bagi sponsor & risiko demonetisasi platform; dan ia bersaing di pasar atensi paling padat. Monetisasi domestik (WTP rupiah) belum terbukti — lihat lensa ke-6 yang hilang.</td>
+          <td>Upside tertinggi di poros no-regret, tapi <b>sudut kontennya berisiko</b>.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="srcnote">Benang merah: arah yang menua paling baik adalah yang memberi <em>hubungan audiens yang dimiliki</em> + <em>produk berdenominasi USD</em> (poros no-regret). (a) dan (b) adalah mesin kas, bukan parit. (c) punya poros yang benar tetapi sudut konten yang dipilih membawa risiko monetisasi.</p>
+  </section>
+
+  <!-- ============ 11 INDONESIA DIVERGENCE ============ -->
+  <section class="section">
+    <div class="section-num">11</div>
+    <h2><span class="bar"></span>Divergensi Indonesia vs Pola Global</h2>
+    <table class="grid">
+      <thead><tr><th style="width:20%">Dimensi</th><th>Pola global</th><th>Indonesia</th><th>Implikasi untukmu</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="rowh">CPM & ekonomi iklan</td>
+          <td>CPM AS/Tier-1 tinggi; AdSense bisa jadi fondasi.</td>
+          <td>Tier-3: CPM ~USD 0,5–1,5; satu view ≈ 16% nilai AS (estimasi vendor). YouTube ambil 45% (Shorts)–45% (long-form kreator dapat 55%).</td>
+          <td>AdSense tak akan pernah cukup. Jangan optimalkan untuk view; optimalkan untuk brand deal, afiliasi, produk.</td>
+        </tr>
+        <tr>
+          <td class="rowh">Regulasi kripto/aset digital</td>
+          <td>Bervariasi; sebagian yurisdiksi ramah token kreator.</td>
+          <td>Pengawasan pindah Bappebti→OJK (Jan 2025, PP 49/2024 & POJK 27/2024); kripto = "aset keuangan digital", <b>dilarang sebagai alat bayar</b> oleh BI; PPh transaksi domestik naik 0,1%→0,21% & PPN kripto dihapus (PMK 50/2025, Agu 2025).</td>
+          <td>Web3-sebagai-pembayaran terhambat secara domestik. Rel nyata adalah QRIS. Stablecoin lintas-batas = zona abu-abu, pantau OJK.</td>
+        </tr>
+        <tr>
+          <td class="rowh">Penetrasi pembayaran</td>
+          <td>Kartu kredit + Stripe/PayPal mulus di Barat.</td>
+          <td>QRIS ~59–60 juta pengguna, pertumbuhan transaksi tiga-digit; mobile-first, dompet elektronik. Kripto 22,91 juta akun terdaftar — tapi spekulatif, bukan rel kreator.</td>
+          <td>Menerima USD butuh jembatan (Gumroad/Stripe/Wise/stablecoin). Mengumpulkan domestik: QRIS mulus, tapi nilai rupiah-nya kecil.</td>
+        </tr>
+        <tr>
+          <td class="rowh">Perilaku audiens</td>
+          <td>Kebiasaan bayar lang-ganan/patronage lebih mapan.</td>
+          <td>Didorong afiliasi & social commerce (TikTok Shop+Tokopedia ~38%, Shopee ~54% dari GMV e-commerce; Momentum Works); sensitif harga; WTP produk digital domestik belum terbukti pada skala.</td>
+          <td>Monetisasi domestik paling andal lewat afiliasi/social commerce. Produk digital berbayar lebih baik membidik pembeli USD.</td>
+        </tr>
+        <tr>
+          <td class="rowh">Efek kurs atas penghasilan</td>
+          <td>Penghasilan & biaya dalam mata uang yang sama.</td>
+          <td>Rupiah ~Rp17.800+/USD & melemah; target net worth-mu dalam rupiah.</td>
+          <td><b>Keunggulan struktural</b>: hasilkan USD, belanja rupiah. Tapi tool/langganan USD jadi makin mahal — kelola biaya input.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ 12 FALSIFIKASI ============ -->
+  <section class="section">
+    <div class="section-num">12</div>
+    <h2><span class="bar"></span>Falsifikasi — apa yang akan membuktikan tiap skenario SALAH</h2>
+    <table class="grid">
+      <thead><tr><th style="width:24%">Skenario</th><th>Terbukti salah jika…</th></tr></thead>
+      <tbody>
+        <tr><td class="rowh">A. Menara Terverifikasi</td><td>Hingga ~2027–28 tidak ada platform besar yang mengaitkan monetisasi/jangkauan ke verifikasi-manusia, DAN kanal "verified human" tidak menunjukkan premium CPM apa pun.</td></tr>
+        <tr><td class="rowh">B. Ladang Algoritma</td><td>Penegakan "inauthentic content" benar-benar mendemonetisasi kanal AI-slop pada skala, pangsa konten AI di feed mendatar/menurun, DAN kanal craft merebut pangsa.</td></tr>
+        <tr><td class="rowh">C. Patronase Berdaulat</td><td>Rel terbuka/stablecoin tetap tak-terpakai di Indonesia (OJK mempertahankan larangan bayar), DAN provenance on-chain tak mendapat pemakaian non-spekulatif yang bertahan.</td></tr>
+        <tr><td class="rowh">D. Rimba Atensi</td><td>Distribusi TIDAK terkonsolidasi ke kanal yang dimiliki, platform mempertahankan peran gerbang, DAN premium-manusia yang terukur justru muncul.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ 13 CLAIM SAFETY ============ -->
+  <section class="section">
+    <div class="section-num">13</div>
+    <h2><span class="bar"></span>Apa yang Aman Dinyatakan</h2>
+    <div class="oncam">
+      <div class="oncam-col safe">
+        <h4>✓ Aman — terverifikasi ke sumber primer</h4>
+        <ul>
+          <li>"40% pekerjaan" IMF adalah <em>exposure</em>, bukan penggantian; ~separuh yang terpapar justru terkomplementasi (IMF SDN/2024/001, Jan 2024).</li>
+          <li>WEF memproyeksikan pertumbuhan pekerjaan <em>neto positif</em> (+78 juta) pada 2030, bukan kehancuran neto.</li>
+          <li>Pengawasan kripto Indonesia pindah ke OJK (Jan 2025) & kripto dilarang sebagai alat bayar oleh BI.</li>
+          <li>YouTube membagi 55% pendapatan iklan long-form ke kreator; CPM Indonesia jauh di bawah AS.</li>
+          <li>Model platform token-kreator (friend.tech, Rally) telah gagal/tutup.</li>
+        </ul>
+      </div>
+      <div class="oncam-col caveat">
+        <h4>⚠ Sebut dengan kualifikasi/atribusi</h4>
+        <ul>
+          <li>Angka pasti CPM Indonesia (~16% nilai AS) — <em>estimasi vendor</em> (ytgrowth.io), bukan data resmi YouTube.</li>
+          <li>Ukuran pasar creator economy (~USD 250B→480B) — estimasi riset satu bank (Goldman Sachs, 2023).</li>
+          <li>Data pasar NFT/MAU web3 — angka pelacak pihak ketiga, bukan laporan resmi.</li>
+          <li>Pendapatan kanal AI-slop (~USD 117 juta/tahun) — satu analisis (Kapwing), perlakukan sebagai estimasi.</li>
+          <li>Premium ~9,7% (PwC 2024) adalah untuk produk <em>berkelanjutan</em> (sustainability), BUKAN keaslian/buatan-manusia — jangan pakai sebagai bukti premium handmade.</li>
+        </ul>
+      </div>
+      <div class="oncam-col avoid">
+        <h4>✕ Jangan nyatakan sebagai fakta</h4>
+        <ul>
+          <li>"Audiens membayar 20–30% lebih untuk handmade" — <b>tak bersumber/spekulasi marketing</b>.</li>
+          <li>"72,9% bersedia bayar lebih untuk karya manusia" — preprint, <em>stated preference</em>, bukan perilaku.</li>
+          <li>"Provenance/humanitas pasti berubah jadi premium harga" — bukti WTP nyata belum ada (Abel &amp; Johnson: tak ada perubahan WTP).</li>
+          <li>Prediksi mana dari empat skenario yang pasti terjadi — ini ketidakpastian, bukan ramalan.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 14 ASUMSI / LENSA KE-6 ============ -->
+  <section class="section">
+    <div class="assume">
+      <h3>Asumsi yang menopang briefing ini (dan lensa ke-6 yang hilang)</h3>
+      <p>Kelima lensa membekukan satu variabel besar: <b>sisi permintaan audiens domestik Indonesia</b>. Semuanya default ke "jual kelangkaan ke pembeli USD Barat" (framing ekspor). Tidak ada yang menguji apakah audiens Indonesia sendiri membayar produk digital/patronase pada skala yang dibutuhkan, atau apa yang mereka hargai secara kultural.</p>
+      <p>Lensa ke-6 yang akan mengubah kesimpulan adalah <b>lensa Audiens/Budaya domestik</b>. Jika WTP domestik untuk produk kreator setipis yang disiratkan CPM Tier-3, maka monetisasi arah (c) terbalik — ia akan bergantung pada dompet domestik yang lemah, bukan pada margin ekspor USD. Bangun dengan kewaspadaan ini: "tinggal jual langsung" mudah diucapkan, tetapi kepada <em>siapa</em> dan dalam <em>mata uang apa</em> menentukan segalanya.</p>
+    </div>
+  </section>
+
+  <!-- ============ 15 FRONTIER QUESTION ============ -->
+  <section class="section">
+    <div class="section-num">15</div>
+    <h2><span class="bar"></span>Pertanyaan Perbatasan</h2>
+    <div class="frontier">
+      <div class="q">Akankah atestasi provenance/kepengarangan yang murah, tak-bisa-dilucuti, dan terlihat-konsumen menjadi default di tempat penemuan terjadi (bukan sekadar saat unggah)?</div>
+      <p>Seluruh premium buatan-manusia — dan satu-satunya pemakaian web3 yang bertahan — bergantung pada ini. Hari ini jawabannya belum: label dilucuti 7 dari 8 platform. Jika <em>ya</em> → skenario Menara Terverifikasi & Patronase Berdaulat hidup, dan taruhan craft terbayar. Jika <em>tidak</em> → premium tetap sekadar keyakinan yang menguap di titik jual (Skeptic menang), dan craft hanyalah cara yang lebih lambat & mahal untuk membuat konten komoditas. Tak ada lensa yang bisa menjawabnya karena ini bergantung pada keputusan produk platform + adopsi standar yang belum terjadi.</p>
+    </div>
+  </section>
+
+  <!-- ============ 16 OPEN QUESTIONS ============ -->
+  <section class="section">
+    <div class="section-num">16</div>
+    <h2><span class="bar"></span>Lima Pertanyaan Terbuka yang Paling Menentukan Jawaban</h2>
+    <table class="grid">
+      <thead><tr><th style="width:5%">#</th><th>Yang tidak kami ketahui</th><th style="width:28%">Menentukan</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Apakah label provenance yang kredibel & menonjol menghasilkan premium <em>willingness-to-pay</em> yang <b>terungkap</b> (eksperimen lapangan, bukan survei), dan seberapa besar?</td><td>Engsel seluruh taruhan. Abel &amp; Johnson menyiratkan efek WTP ~nol.</td></tr>
+        <tr><td>2</td><td>Akankah OJK/BI pernah mengizinkan payout stablecoin lintas-batas yang mulus bagi kreator, atau mempertahankan larangan?</td><td>Hidup-matinya skenario Patronase Berdaulat bagi orang Indonesia.</td></tr>
+        <tr><td>3</td><td>Berapa WTP audiens Indonesia domestik untuk produk digital/patronase pada skala (bukan iklan)?</td><td>Hidup-matinya arah (c) & monetisasi berdenominasi rupiah.</td></tr>
+        <tr><td>4</td><td>Akankah platform menegakkan demonetisasi "inauthentic content" secara efektif, atau AI-slop terus memonetisasi?</td><td>Menara Terverifikasi (A) vs Ladang Algoritma (B).</td></tr>
+        <tr><td>5</td><td>Seberapa cepat AI video bisa meniru <em>proses</em> gambar-tangan yang meyakinkan (bukan hanya output)?</td><td>Apakah parit craft punya lantai keras atau hitung-mundur.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ REFERENCES ============ -->
+  <div class="refs">
+    <h3>Basis bukti &middot; status verifikasi</h3>
+    <ul>
+      <li><span class="vstat ok">Confirmed</span> IMF Staff Discussion Note SDN/2024/001, Cazzaniga dkk., "Gen-AI: Artificial Intelligence and the Future of Work", 14 Jan 2024 — ~40% kerja global <em>terpapar</em> (bukan diganti); ~separuh terkomplementasi. <a href="https://www.imf.org/en/Blogs/Articles/2024/01/14/ai-will-transform-the-global-economy-lets-make-sure-it-benefits-humanity">imf.org</a></li>
+      <li><span class="vstat ok">Confirmed</span> WEF, Future of Jobs Report 2025, Jan 2025 — 170 juta tercipta, 92 juta tergeser, neto +78 juta pada 2030; survei 1.000+ pemberi kerja (bukan peer-review). <a href="https://www.weforum.org/press/2025/01/future-of-jobs-report-2025-78-million-new-job-opportunities-by-2030-but-urgent-upskilling-needed-to-prepare-workforces/">weforum.org</a></li>
+      <li><span class="vstat part">Corrected</span> Frey &amp; Osborne, "The Future of Employment", 2013/2017 — "47% berisiko", level-okupasi; dikoreksi oleh OECD (Arntz dkk. 2016) ~9% berbasis-tugas. <a href="https://www.oxfordmartin.ox.ac.uk/publications/view/1314">oxfordmartin.ox.ac.uk</a></li>
+      <li><span class="vstat ok">Confirmed</span> Bellaiche dkk., "Humans versus AI: whether and why we prefer human-created compared to AI-created artwork", <em>Cognitive Research</em> 2023 (peer-review) — karya identik dinilai lebih tinggi saat dilabeli "manusia". <a href="https://cognitiveresearchjournal.springeropen.com/articles/10.1186/s41235-023-00499-6">springeropen.com</a></li>
+      <li><span class="vstat part">Corrected</span> Abel &amp; Johnson (2025), "AI Bias for Creative Writing", IZA Discussion Paper No. 17646, N=654 — label "AI" menurunkan rating fiksi TETAPI TIDAK menurunkan WTP/waktu baca (bahkan bagi 36% yang bilang lebih menghargai karya manusia); <em>working paper, belum peer-review</em>. <a href="https://ideas.repec.org/p/iza/izadps/dp17646.html">ideas.repec.org</a></li>
+      <li><span class="vstat weak">Demoted</span> Uji buta AI vs manusia — angka n≈11rb / akurasi 60,6% / "6 dari 10 terfavorit = AI" berasal dari Scott Alexander, <em>Astral Codex Ten</em> (Nov 2024), survei blog sampel-memilih-sendiri. <b>Koreksi: ini BUKAN arXiv:2509.11371</b> (preprint terpisah "Lovelace Test", Gajewska 2025). Keduanya belum peer-review. <a href="https://www.astralcodexten.com/p/how-did-you-do-on-the-ai-art-turing">astralcodexten.com</a></li>
+      <li><span class="vstat weak">Demoted</span> Sultana dkk. (2026), "Struggle Premium", arXiv:2604.15324 — 72,9% WTP (survei ~70 mahasiswa); <em>preprint, stated preference</em>, bukan perilaku. Jangan nyatakan sebagai fakta. <a href="https://arxiv.org/abs/2604.15324">arxiv.org</a></li>
+      <li><span class="vstat part">Corrected</span> PwC "Voice of the Consumer" 2024 (>20.000 konsumen, 31 negara) — premium <b>9,7% untuk produk BERKELANJUTAN (sustainability)</b>, BUKAN keaslian/buatan-manusia. Koreksi atas framing lensa yang mengaitkannya ke premium handmade. <a href="https://www.pwc.com/gx/en/news-room/press-releases/2024/pwc-2024-voice-of-consumer-survey.html">pwc.com</a></li>
+      <li><span class="vstat ok">Confirmed</span> friend.tech melepas kontrak ~8 Sep 2024 setelah pendapatan protokol tipis; token anjlok. <a href="https://cryptoslate.com/generating-only-21-in-revenue-in-30-days-friendtech-relinquishes-control-of-contracts/">cryptoslate.com</a></li>
+      <li><span class="vstat ok">Confirmed</span> Rally (danai ~USD 57 jt, a16z) menutup sidechain ~Jan 2023, menghanguskan aset kreator. <a href="https://decrypt.co/120285/rally-social-token-platform-shut-down-sidechain">decrypt.co</a></li>
+      <li><span class="vstat part">Corrected</span> Pasar NFT jatuh dari puncak 2021–22; penjualan 2025 ~US$5,63 miliar (−37% YoY), harga rata-rata ~US$96 (CryptoSlam); kapitalisasi pasar NFT &lt;US$1,5 miliar per Feb 2026 (CoinGecko) — estimasi pelacak. Nifty Gateway (Gemini) tutup 23 Feb 2026; Nike tutup RTFKT (Des 2024). <a href="https://cointelegraph.com/news/nft-supply-growth-sales-decline-2025">cointelegraph.com</a></li>
+      <li><span class="vstat weak">Demoted</span> Farcaster DAU puncak ~80k → ~16k (awal 2024), pendapatan −96% (Okt 2024); token ZORA (airdrop, 23 Apr 2025) turun ~54% dalam ~2 jam — angka pihak ketiga, bukan data resmi; klaim "&lt;20k MAU 2025" tidak terverifikasi. <a href="https://www.theblock.co/post/323003">theblock.co</a></li>
+      <li><span class="vstat part">Corrected</span> EY, "The Class of 2017 — One Year Later" (19 Okt 2018), 141 ICO teratas — <b>86% diperdagangkan di bawah harga listing</b>; hanya ~29% punya produk kerja per akhir 2018 (naik dari ~13%). Koreksi: angka "46–59% gagal" BUKAN dari EY (sumber lain). <a href="https://www.theblock.co/post/2058">theblock.co</a></li>
+      <li><span class="vstat ok">Confirmed</span> Peralihan pengawasan kripto Bappebti→OJK (10 Jan 2025) via PP 49/2024 & POJK 27/2024; reklasifikasi "aset keuangan digital"; kepatuhan Jul 2025 (kemudian diubah POJK 23/2025). <a href="https://ssek.com/blog/from-bappebti-to-ojk-indonesias-crypto-regulation-just-changed/">ssek.com</a></li>
+      <li><span class="vstat ok">Confirmed</span> Bank Indonesia melarang kripto sebagai alat pembayaran (hanya aset/komoditas yang boleh diperdagangkan). <a href="https://www.bi.go.id/">bi.go.id</a></li>
+      <li><span class="vstat part">Corrected</span> Crypto Indonesia 2024: ~22,91 juta akun, ~Rp650,61 triliun (+335,91% YoY, Bappebti); <b>2025 turun ~25,88% ke Rp482,23 triliun (OJK)</b> meski akun naik ~20,19 juta. <a href="https://www.investortrust.id/">investortrust.id</a></li>
+      <li><span class="vstat part">Corrected</span> QRIS 56,3 juta pengguna (Q1 2025) → ~59,5 juta akhir 2025; 15,51 miliar transaksi (<b>+148,54% jumlah</b>) senilai Rp1.420,66 triliun (<b>+115,27% nilai</b>) — koreksi: +148,5% adalah jumlah transaksi, bukan nilai (Bank Indonesia). <a href="https://keuangan.kontan.co.id/">kontan.co.id</a></li>
+      <li><span class="vstat ok">Confirmed</span> Rupiah Rp17.006/USD (5 Apr 2025, terlemah sejak krisis 1998), ~Rp17.800–17.900/USD (pertengahan 2026), tembus &gt;Rp18.000 awal Jul 2026 — tren melemah. <a href="https://databoks.katadata.co.id/">databoks.katadata.co.id</a></li>
+      <li><span class="vstat part">Corrected</span> E-commerce Indonesia GMV ~US$57,7 miliar 2025; <b>TikTok Shop + Tokopedia (gabungan, pasca-merger Des 2023) ~38%</b>, Shopee ~54% (Momentum Works — pelacak). Koreksi: 38% bukan TikTok Shop sendirian. <a href="https://thelowdown.momentum.asia/">momentum.asia</a></li>
+      <li><span class="vstat ok">Confirmed</span> Google-Temasek-Bain, e-Conomy SEA 2024 (Nov 2024) — GMV ekonomi digital Indonesia ~USD 90 miliar, +13% YoY. <a href="https://www.bain.com/insights/e-conomy-sea-2024/">bain.com</a></li>
+      <li><span class="vstat ok">Confirmed</span> Goldman Sachs Research (E. Sheridan), Apr 2023 — creator economy ~USD 250B→480B (2027); ~4% dari ~50 jt kreator "profesional". <a href="https://www.goldmansachs.com/insights/articles/the-creator-economy-could-approach-half-a-trillion-dollars-by-2027">goldmansachs.com</a></li>
+      <li><span class="vstat ok">Confirmed</span> YouTube Partner Program — kreator dapat 55% iklan long-form, 45% Shorts, ~70% fan-funding. <a href="https://support.google.com/youtube/answer/72902">support.google.com</a></li>
+      <li><span class="vstat weak">Demoted</span> CPM/RPM Indonesia ~16% nilai AS — <em>estimasi vendor</em> (ytgrowth.io); YouTube tak publikasi RPM per-negara. Korroborasi order-of-magnitude: dataset independen Agu 2025 menaksir CPM Indonesia ~US$0,87 vs AS ~US$11,95. <a href="https://ytgrowth.io/youtube-earnings/finance/indonesia">ytgrowth.io</a></li>
+      <li><span class="vstat ok">Confirmed</span> Kebijakan monetisasi "inauthentic/mass-produced content" YouTube berlaku 15 Jul 2025 — klarifikasi aturan lama (bukan larangan baru); menargetkan konten massal-repetitif, bukan kanal faceless atau format sah (reaction/review). <a href="https://gulfnews.com/technology/youtube-updates-monetisation-policies-ai-and-repetitive-content-ban-begins-july-15-1.500192660">gulfnews.com</a></li>
+      <li><span class="vstat weak">Demoted</span> Analisis Kapwing (dilaporkan Des 2025) — ~278 kanal AI, ~63 miliar view, ~221 juta subs, ~US$117 jt/th iklan (<em>estimasi tunggal</em>; &gt;20% rekomendasi ke akun baru = konten AI). <b>Fabrikasi dikeluarkan:</b> klaim "operator faceless US$3–4 jt/th" FALSE — profil Fortune (30 Des 2025, Adavia Davis) sebenarnya ~US$700rb/th; US$4,25 jt adalah kanal teratas Kapwing yang terkonflasi. <a href="https://www.searchenginejournal.com/youtubes-ai-slop-problem-and-how-marketers-can-compete/">searchenginejournal.com</a></li>
+      <li><span class="vstat ok">Confirmed</span> Uji Washington Post — 7 dari 8 platform melucuti C2PA/Content Credentials; satu memendamnya (provenance label mudah hilang di alur unggah). <a href="https://ppc.land/c2pa/">ppc.land</a></li>
+    </ul>
+  </div>
+
+  <div class="footer">Storm Research v2 &middot; 26/26 sitasi dicek independen terhadap sumber primer, 22 Okt 2026 &middot; 1 fabrikasi dikeluarkan, 8 dikoreksi, 5 diturunkan &middot; Reliabilitas = kualitas bukti, bukan keyakinan penulis</div>
+
+</div>
+</body>
+</html>
